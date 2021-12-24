@@ -3,13 +3,9 @@ from tasks.info_reader import read_furniture, read_rooms, read_spaces, read_inte
 import random
 
 def populate_interactions():
-  # prep interactions
-  interactions = get_interactions()
-  random.shuffle(interactions)
-  # prep furniture
+  interactions = read_interactions()
   furniture = read_furniture()
   random.shuffle(furniture)
-  # prep add interactions to furniture
   for index, interaction in enumerate(interactions):
     interaction.furniture_name = furniture[index].name
   return interactions  
@@ -21,6 +17,7 @@ def setup_interactions(id):
     lines.append("- " + interaction.furniture_name + " : " + interaction.name)
   add_line_to_file("## Furniture", id)
   add_lines_to_file(lines, id)
+  return interactions
 
 def get_rooms():
   rooms = read_rooms()
@@ -46,6 +43,9 @@ def populate_spaces():
   return spaces
 
 def setup_spaces(id):
+  interactions = setup_interactions(id)
+  # TODO one clue in each room MAX
+
   spaces = populate_spaces()
   lines = []
   for space in spaces:
@@ -55,15 +55,9 @@ def setup_spaces(id):
   add_line_to_file("## Rooms", id)
   add_lines_to_file(lines, id)
 
-def get_interactions():
-  interactions = read_interactions()
-  random.shuffle(interactions)
-  return interactions
-
 def setup_mansion(id):
   print("setting up mansion...")
   setup_spaces(id)
-  setup_interactions(id)
   # TODO each room needs:
   #   furniture
   # TODO each HINT interaction needs
