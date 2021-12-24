@@ -2,15 +2,23 @@ from tasks.game_file_writer import add_line_to_file, add_lines_to_file
 from tasks.info_reader import read_furniture, read_rooms, read_spaces, read_interactions
 import random
 
-def setup_furniture(id):
+def populate_interactions():
+  # prep interactions
+  interactions = get_interactions()
+  random.shuffle(interactions)
+  # prep furniture
   furniture = read_furniture()
   random.shuffle(furniture)
-  
+  # prep add interactions to furniture
+  for index, interaction in enumerate(interactions):
+    interaction.furniture_name = furniture[index].name
+  return interactions  
+
+def setup_interactions(id):
+  interactions = populate_interactions()
   lines = []
-
-  for furn in furniture:
-    lines.append("- " + furn.name + " (" + furn.game_code + ")")
-
+  for interaction in interactions:
+    lines.append("- " + interaction.furniture_name + " : " + interaction.name)
   add_line_to_file("## Furniture", id)
   add_lines_to_file(lines, id)
 
@@ -47,24 +55,17 @@ def setup_spaces(id):
   add_line_to_file("## Rooms", id)
   add_lines_to_file(lines, id)
 
-def setup_interactions(id):
+def get_interactions():
   interactions = read_interactions()
   random.shuffle(interactions)
-  lines = []
-  for interaction in interactions:
-    lines.append("- " + interaction.name)
-  add_line_to_file("## Interactions", id)
-  add_lines_to_file(lines, id)    
+  return interactions
 
 def setup_mansion(id):
   print("setting up mansion...")
   setup_spaces(id)
-  setup_furniture(id)
   setup_interactions(id)
-  # TODO each space needs:
+  # TODO each room needs:
   #   furniture
-  # TODO each furniture needs
-  #   interaction
   # TODO each HINT interaction needs
   #   requirement
   #   type

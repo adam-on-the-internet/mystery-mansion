@@ -9,10 +9,10 @@ def select_person(clues, id):
       people.append(clue.name)
   random.shuffle(people)
   lines = [
-    "Person #1: " + people[0] + ": needed for MONEY",
-    "Person #2: " + people[1] + ": needed for PRIVATE HINT #12",
-    "Person #3: " + people[2] + ": needed for PRIVATE HINT #11",
-    "Person #4: " + people[3] + ": needed for PRIVATE HINT #10",
+    "Person #1 - " + people[0] + " : needed for MONEY",
+    "Person #2 - " + people[1] + " : needed for PRIVATE HINT #12",
+    "Person #3 - " + people[2] + " : needed for PRIVATE HINT #11",
+    "Person #4 - " + people[3] + " : needed for PRIVATE HINT #10",
   ]
   add_lines_to_file(lines, id)
 

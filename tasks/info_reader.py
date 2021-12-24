@@ -1,11 +1,12 @@
 from csv import reader
 
 class MyInteraction:
-  def __init__(self, interaction_type, name, requirement, details):
+  def __init__(self, interaction_type, name, requirement, details, furniture_name):
     self.interaction_type = interaction_type
     self.name = name
     self.requirement = requirement
     self.details = details
+    self.furniture_name = furniture_name
 
 class MySpace:
   def __init__(self, game_code, name, can_be_locked, is_locked, room_name):
@@ -45,7 +46,7 @@ def read_interactions():
         name = row[1].strip()
         requirement = row[2].strip()
         details = row[3].strip()
-        myInteraction = MyInteraction(interaction_type, name, requirement, details)
+        myInteraction = MyInteraction(interaction_type, name, requirement, details, '')
         interactions.append(myInteraction)
     return interactions  
 
