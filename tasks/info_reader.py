@@ -1,5 +1,16 @@
 from csv import reader
 
+class MyInteraction:
+  def __init__(self, interaction_type, name):
+    self.interaction_type = interaction_type
+    self.name = name
+
+class MySpace:
+  def __init__(self, game_code, name, can_be_locked):
+    self.game_code = game_code
+    self.name = name
+    self.can_be_locked = can_be_locked
+
 class MyRoom:
   def __init__(self, name):
     self.name = name
@@ -20,12 +31,35 @@ class MyClue:
   def get_is_key(self):
     return self.clue_type == "key"
 
+def read_interactions():
+  with open("./info/interactions.csv", newline='') as interaction_file:
+    interaction_reader = reader(interaction_file, delimiter=',')
+    interactions = []
+    for index, row in enumerate(interaction_reader):
+      if index > 0 and len(row) > 0:
+        interaction_type = row[0].strip()
+        name = row[1].strip()
+        myInteraction = MyInteraction(interaction_type, name)
+        interactions.append(myInteraction)
+    return interactions  
+
+def read_spaces():
+  with open("./info/spaces.csv", newline='') as space_file:
+    space_reader = reader(space_file, delimiter=',')
+    spaces = []
+    for index, row in enumerate(space_reader):
+      if index > 0 and len(row) > 0:
+        game_code = row[0].strip()
+        name = row[1].strip()
+        can_be_locked = row[2].strip() == "true"
+        mySpace = MySpace(game_code, name, can_be_locked)
+        spaces.append(mySpace)
+    return spaces
+
 def read_rooms():
   with open("./info/rooms.csv", newline='') as room_file:
     room_reader = reader(room_file, delimiter=',')
-
     rooms = []
-
     for index, row in enumerate(room_reader):
       if index > 0 and len(row) > 0:
         name = row[0].strip()

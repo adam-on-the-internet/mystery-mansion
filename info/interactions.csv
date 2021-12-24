@@ -1,0 +1,37 @@
+type, name
+
+money, The Money
+clue, Clue #1
+clue, Clue #2
+clue, Clue #3
+clue, Clue #4
+clue, Clue #5
+clue, Clue #6
+clue, Clue #7
+public message, Public Message #1
+public message, Public Message #2
+public message, Public Message #3
+public message, Public Message #4
+public message, Public Message #5
+public message, Public Message #6
+public message, Public Message #7
+public message, Public Message #8
+public message, Public Message #9
+public message, Public Message #10
+public message, Public Message #11
+public message, Public Message #12
+public message, Public Message #13
+public message, Public Message #14
+public message, Public Message #15
+private message L0, Private Message #1
+private message L0, Private Message #2
+private message L0, Private Message #3
+private message L0, Private Message #4
+private message L0, Private Message #5
+private message L0, Private Message #6
+private message L0, Private Message #7
+private message L1, Private Message #8
+private message L1, Private Message #9
+private message L1, Private Message #10
+private message L1, Private Message #11
+private message L2, Private Message #12
