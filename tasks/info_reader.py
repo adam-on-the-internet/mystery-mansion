@@ -1,5 +1,9 @@
 from csv import reader
 
+class MyRoom:
+  def __init__(self, name):
+    self.name = name
+
 class MyFurniture:
   def __init__(self, game_code, name):
     self.game_code = game_code
@@ -16,6 +20,20 @@ class MyClue:
   def get_is_key(self):
     return self.clue_type == "key"
 
+def read_rooms():
+  with open("./info/rooms.csv", newline='') as room_file:
+    room_reader = reader(room_file, delimiter=',')
+
+    rooms = []
+
+    for index, row in enumerate(room_reader):
+      if index > 0 and len(row) > 0:
+        name = row[0].strip()
+        myRoom = MyRoom(name)
+        rooms.append(myRoom)
+    
+    return rooms[:9] 
+
 def read_furniture():
   with open("./info/furniture.csv", newline='') as furniture_file:
     furniture_reader = reader(furniture_file, delimiter=',')
@@ -29,9 +47,7 @@ def read_furniture():
         myFurniture = MyFurniture(game_code, name)
         furniture.append(myFurniture)
     
-    # TODO return 35 furniture
-    
-    return furniture
+    return furniture[:35]
 
 def read_clues():
   with open("./info/clues.csv", newline='') as clue_file:
@@ -46,6 +62,19 @@ def read_clues():
         myClue = MyClue(clue_type, name)
         clues.append(myClue)
     
-    # TODO return 2 keys, 4 items, 4 people
+    sorted_clues = []
+    key_count = 0
+    item_count = 0
+    person_count = 0
+    for clue in clues:
+      if clue.get_is_key() and key_count < 2:
+        sorted_clues.append(clue)
+        key_count = key_count + 1
+      elif clue.get_is_item() and item_count < 4:
+        sorted_clues.append(clue)
+        item_count = item_count + 1
+      elif clue.get_is_person() and person_count < 4:
+        sorted_clues.append(clue)
+        person_count = person_count + 1
 
-    return clues
+    return sorted_clues
