@@ -1,5 +1,6 @@
 from tasks.clue_selector import prepare_clue_deck
 from tasks.game_file_writer import initialize_game_file
+from tasks.mansion_builder import setup_mansion
 import datetime
 
 start_time = datetime.datetime.now()
@@ -8,9 +9,7 @@ print()
 
 id = initialize_game_file()
 prepare_clue_deck(id)
-# hideMoney()
-# setupFurniture()
-# lockRooms()
+setup_mansion(id)
 
 end_time = datetime.datetime.now()
 print()
