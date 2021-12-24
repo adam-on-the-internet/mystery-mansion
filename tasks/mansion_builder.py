@@ -14,7 +14,7 @@ def setup_interactions(id):
   interactions = populate_interactions()
   lines = []
   for interaction in interactions:
-    lines.append("- " + interaction.furniture_name + " : " + interaction.name)
+    lines.append("- " + interaction.name + " : " + interaction.furniture_name)
   add_line_to_file("## Furniture", id)
   add_lines_to_file(lines, id)
   return interactions
