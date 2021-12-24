@@ -1,13 +1,16 @@
+from tasks.clue_selector import prepare_clue_deck
+
 import datetime
 
-startTime = datetime.datetime.now()
-print("~ MYSTERY MANSION STARTING @ " + str(startTime))
+start_time = datetime.datetime.now()
+print("~ MYSTERY MANSION STARTING @ " + str(start_time))
 
-shuffleClueDeck()
-hideMoney()
-lockRooms()
-setupFurniture()
+# prepare_game_file()
+prepare_clue_deck()
+# hideMoney()
+# lockRooms()
+# setupFurniture()
 
-endTime = datetime.datetime.now()
-print("~ MYSTERY MANSION ENDING   @ " + str(endTime))
-print("~ Script ran in " + str(endTime - startTime))
+end_time = datetime.datetime.now()
+print("~ MYSTERY MANSION ENDING   @ " + str(end_time))
+print("~ Script ran in " + str(end_time - start_time))
