@@ -8,10 +8,12 @@ class MyInteraction:
     self.details = details
 
 class MySpace:
-  def __init__(self, game_code, name, can_be_locked):
+  def __init__(self, game_code, name, can_be_locked, is_locked, room_name):
     self.game_code = game_code
     self.name = name
     self.can_be_locked = can_be_locked
+    self.is_locked = is_locked
+    self.room_name = room_name
 
 class MyRoom:
   def __init__(self, name):
@@ -56,7 +58,7 @@ def read_spaces():
         game_code = row[0].strip()
         name = row[1].strip()
         can_be_locked = row[2].strip() == "true"
-        mySpace = MySpace(game_code, name, can_be_locked)
+        mySpace = MySpace(game_code, name, can_be_locked, False, '')
         spaces.append(mySpace)
     return spaces
 

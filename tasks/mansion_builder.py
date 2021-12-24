@@ -14,25 +14,35 @@ def setup_furniture(id):
   add_line_to_file("## Furniture", id)
   add_lines_to_file(lines, id)
 
-def setup_rooms(id):
+def get_rooms():
   rooms = read_rooms()
   random.shuffle(rooms)
-  
-  lines = []
+  return rooms
 
-  for room in rooms:
-    lines.append("- " + room.name)
+def get_locked_spaces(spaces):
+  lockable_spaces = []
+  for space in spaces:
+    if space.can_be_locked:
+      lockable_spaces.append(space.name)
+  random.shuffle(lockable_spaces)
+  return lockable_spaces[:2]  
 
-  add_line_to_file("## Rooms", id)
-  add_lines_to_file(lines, id)
+def populate_spaces():
+  rooms = get_rooms()
+  spaces = read_spaces()
+  locked_spaces = get_locked_spaces(spaces)
+
+  for index, space in enumerate(spaces):
+    space.is_locked = space.name in locked_spaces
+    space.room_name = rooms[index].name
+  return spaces
 
 def setup_spaces(id):
-  spaces = read_spaces()
-  
+  spaces = populate_spaces()
   lines = []
-
   for space in spaces:
-    lines.append("- " + space.name)
+    locked_message = " [LOCKED]" if space.is_locked else ""
+    lines.append("- (" + space.game_code + ") " + space.room_name + locked_message)
 
   add_line_to_file("## Spaces", id)
   add_lines_to_file(lines, id)
@@ -48,14 +58,14 @@ def setup_interactions(id):
 
 def setup_mansion(id):
   print("setting up mansion...")
-  setup_furniture(id)
-  setup_rooms(id)
   setup_spaces(id)
+  setup_furniture(id)
   setup_interactions(id)
   # TODO each space needs:
-  #   locked or unlocked
-  #   room name
   #   furniture
   # TODO each furniture needs
   #   interaction
-  return
+  # TODO each HINT interaction needs
+  #   requirement
+  #   type
+  #   message
