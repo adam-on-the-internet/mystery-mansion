@@ -1,5 +1,19 @@
 from csv import reader
 
+class MyAsset:
+  def __init__(self, name, asset_type, clue_name):
+    self.name = name
+    self.asset_type = asset_type
+    self.clue_name = clue_name
+  def get_is_person(self):
+    return self.asset_type == "person"
+  def get_is_item(self):
+    return self.asset_type == "item"
+  def get_is_key(self):
+    return self.asset_type == "key"
+  def get_is_person_or_item(self):
+    return self.asset_type == "person or item"
+
 class MyInteraction:
   def __init__(self, interaction_type, name, requirement, details, furniture_name):
     self.interaction_type = interaction_type
@@ -36,6 +50,18 @@ class MyClue:
     return self.clue_type == "item"
   def get_is_key(self):
     return self.clue_type == "key"
+
+def read_assets():
+  with open("./info/assets.csv", newline='') as asset_file:
+    asset_reader = reader(asset_file, delimiter=',')
+    assets = []
+    for index, row in enumerate(asset_reader):
+      if index > 0 and len(row) > 0:
+        name = row[0].strip()
+        asset_type = row[1].strip()
+        myAsset = MyAsset(name, asset_type, '')
+        assets.append(myAsset)
+    return assets  
 
 def read_interactions():
   with open("./info/interactions.csv", newline='') as interaction_file:
