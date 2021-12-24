@@ -1,4 +1,5 @@
 from util.file_utils import make_directory_if_not_exists
+import uuid
 
 def add_line_to_file(line, id):
   add_lines_to_file([line], id)
@@ -33,8 +34,8 @@ def initialize_game_file():
   print("initialize game file...")
 
   # setup game variables
-  id = "asdf1234" # TODO randomize
-  name = "The First Game" # TODO randomize
+  id = str(uuid.uuid4())
+  name = "Find the Money" # TODO randomize game name
 
   # verify game directory is setup
   games_directory = get_games_directory()
@@ -48,7 +49,7 @@ def initialize_game_file():
   open_blank_setup_file(id)
   lines = [
     "# Mystery Mansion: " + name,
-    "GAME ID: " + id,
+    "id: " + id,
   ]
   add_lines_to_file(lines, id)
 
