@@ -1,32 +1,6 @@
 from tasks.game_file_writer import add_line_to_file
-from csv import reader
+from tasks.info_reader import read_clues
 import random
-
-class MyClue:
-  def __init__(self, clue_type, name):
-    self.clue_type = clue_type
-    self.name = name
-  def get_is_person(self):
-    return self.clue_type == "person"
-  def get_is_item(self):
-    return self.clue_type == "item"
-  def get_is_key(self):
-    return self.clue_type == "key"
-
-def read_clues():
-  with open("./info/clues.csv", newline='') as clue_file:
-    clue_reader = reader(clue_file, delimiter=',')
-
-    clues = []
-
-    for index, row in enumerate(clue_reader):
-      if index > 0 and len(row) > 0:
-        clue_type = row[0].strip()
-        name = row[1].strip()
-        myClue = MyClue(clue_type, name)
-        clues.append(myClue)
-    
-    return clues
 
 def select_person(clues, id):
   people = []
