@@ -29,6 +29,8 @@ def read_furniture():
         myFurniture = MyFurniture(game_code, name)
         furniture.append(myFurniture)
     
+    # TODO return 35 furniture
+    
     return furniture
 
 def read_clues():
@@ -44,4 +46,6 @@ def read_clues():
         myClue = MyClue(clue_type, name)
         clues.append(myClue)
     
+    # TODO return 2 keys, 4 items, 4 people
+
     return clues
