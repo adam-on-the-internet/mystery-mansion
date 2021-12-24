@@ -1,4 +1,4 @@
-from tasks.game_file_writer import add_line_to_file
+from tasks.game_file_writer import add_line_to_file, add_lines_to_file
 from tasks.info_reader import read_clues
 import random
 
@@ -8,8 +8,13 @@ def select_person(clues, id):
     if clue.get_is_person():
       people.append(clue.name)
   random.shuffle(people)
-  selected_person = people[0]
-  add_line_to_file("Selected Person: " + selected_person, id)
+  lines = [
+    "Person #1: " + people[0] + ": needed for MONEY",
+    "Person #2: " + people[1] + ": needed for PRIVATE HINT #12",
+    "Person #3: " + people[2] + ": needed for PRIVATE HINT #11",
+    "Person #4: " + people[3] + ": needed for PRIVATE HINT #10",
+  ]
+  add_lines_to_file(lines, id)
 
 def select_item(clues, id):
   items = []
@@ -17,8 +22,13 @@ def select_item(clues, id):
     if clue.get_is_item():
       items.append(clue.name)
   random.shuffle(items)
-  selected_item = items[0]
-  add_line_to_file("Selected Item: " + selected_item, id)
+  lines = [
+    "Item #1: " + items[0] + ": needed for MONEY",
+    "Item #2: " + items[1] + ": needed for PRIVATE HINT #12",
+    "Item #3: " + items[2] + ": needed for PRIVATE HINT #9",
+    "Item #4: " + items[3] + ": needed for PRIVATE HINT #8",
+  ]
+  add_lines_to_file(lines, id)
 
 def shuffle_cards(clues, id):
   clue_deck = []

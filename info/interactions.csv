@@ -1,37 +1,37 @@
-type, name
+type, name, requirement, details
 
-money, The Money
-clue, Clue #1
-clue, Clue #2
-clue, Clue #3
-clue, Clue #4
-clue, Clue #5
-clue, Clue #6
-clue, Clue #7
-public message, Public Message #1
-public message, Public Message #2
-public message, Public Message #3
-public message, Public Message #4
-public message, Public Message #5
-public message, Public Message #6
-public message, Public Message #7
-public message, Public Message #8
-public message, Public Message #9
-public message, Public Message #10
-public message, Public Message #11
-public message, Public Message #12
-public message, Public Message #13
-public message, Public Message #14
-public message, Public Message #15
-private message L0, Private Message #1
-private message L0, Private Message #2
-private message L0, Private Message #3
-private message L0, Private Message #4
-private message L0, Private Message #5
-private message L0, Private Message #6
-private message L0, Private Message #7
-private message L1, Private Message #8
-private message L1, Private Message #9
-private message L1, Private Message #10
-private message L1, Private Message #11
-private message L2, Private Message #12
+money, The Money, requires person #1 and item #1,
+clue, Clue #1,,
+clue, Clue #2,,
+clue, Clue #3,,
+clue, Clue #4,,
+clue, Clue #5,,
+clue, Clue #6,,
+clue, Clue #7,,
+public hint, Public Hint #1,, the money is NOT in the [room]
+public hint, Public Hint #2,, the money is NOT in the [room]
+public hint, Public Hint #3,, the money is NOT in the [room]
+public hint, Public Hint #4,, the money is NOT in the [room]
+public hint, Public Hint #5,, the money is NOT in the [room]
+public hint, Public Hint #6,, the money is NOT in the [room]
+public hint, Public Hint #7,, the money is NOT in the [room]
+public hint, Public Hint #8,, the money is NOT in the [furniture]
+public hint, Public Hint #9,, the money is NOT in the [furniture]
+public hint, Public Hint #10,, the money is NOT in the [furniture]
+public hint, Public Hint #11,, the money is NOT in the [furniture]
+public hint, Public Hint #12,, the money is NOT in the [furniture]
+public hint, Public Hint #13,, the money is NOT in the [furniture]
+public hint, Public Hint #14,, the money is NOT in the [furniture]
+public hint, Public Hint #15,, the money is NOT in the [furniture]
+private hint L0, Private Hint #1, requires nothing, the money is NOT in the [furniture]
+private hint L0, Private Hint #2, requires nothing, the money is NOT in the [furniture]
+private hint L0, Private Hint #3, requires nothing, the money is NOT in the [furniture]
+private hint L0, Private Hint #4, requires nothing, the money is NOT in the [furniture]
+private hint L0, Private Hint #5, requires nothing, the money is NOT in the [room]
+private hint L0, Private Hint #6, requires nothing, the money is NOT in the [room]
+private hint L0, Private Hint #7, requires nothing, the money is NOT in the [room]
+private hint L1, Private Hint #8, requires item #4, the money is NOT in the [room]
+private hint L1, Private Hint #9, requires item #3, to find the money, you need the [person]
+private hint L1, Private Hint #10, requires person #4, to find the money, you need the [item]
+private hint L1, Private Hint #11, requires person #3, look for the money in the [room]
+private hint L2, Private Hint #12, requires person #2 and item #2, look for the money in the [furniture]
