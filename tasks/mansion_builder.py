@@ -44,7 +44,7 @@ def setup_spaces(id):
     locked_message = " [LOCKED]" if space.is_locked else ""
     lines.append("- (" + space.game_code + ") " + space.room_name + locked_message)
 
-  add_line_to_file("## Spaces", id)
+  add_line_to_file("## Rooms", id)
   add_lines_to_file(lines, id)
 
 def setup_interactions(id):
