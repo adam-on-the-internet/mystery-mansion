@@ -21,9 +21,10 @@ class MyRoom:
     self.name = name
 
 class MyFurniture:
-  def __init__(self, game_code, name):
+  def __init__(self, game_code, name, rooms):
     self.game_code = game_code
     self.name = name
+    self.rooms = rooms
 
 class MyClue:
   def __init__(self, clue_type, name):
@@ -85,7 +86,8 @@ def read_furniture():
       if index > 0 and len(row) > 0:
         game_code = row[0].strip()
         name = row[1].strip()
-        myFurniture = MyFurniture(game_code, name)
+        rooms = row[2].strip()
+        myFurniture = MyFurniture(game_code, name, rooms)
         furniture.append(myFurniture)
     
     return furniture[:35]

@@ -41,6 +41,7 @@ def shuffle_cards(clues, id):
 
 def prepare_clue_deck(id):
   print("preparing clue deck...")
+  # TODO use ASSET layer over clues
   add_line_to_file("## Clue Setup", id)
   clues = read_clues()
   select_person(clues, id)

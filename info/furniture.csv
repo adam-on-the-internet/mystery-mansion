@@ -1,37 +1,37 @@
-code, name
+code, name, rooms
 
-111, Dining Chair #1
-112, Dining Chair #2
-113, Dining Table
-114, China Cabinet
-121, Sofa
-122, Coffee Table
-123, Bed
-123, Dresser
-131, Bookcase (small)
-132, Refrigerator
-133, Sink
-134, Oven
-141, Kitchen Table
-142, Pool Table
-143, Pinball Machines
-144, Bookcase (large)
-211, Hot Tub
-212, Treadmill
-213, Piano
-214, Telescope
-221, Clock
-222, Computer
-223, Juke Box
-224, Rug
-231, Fireplace
-232, Knight
-233, Television
-234, Fish Tank
-241, Floor Lamp
-242, Planter
-243, Easel
-244, Black Armchair #1
-311, Black Armchair #2
-312, White Armchair #1
-313, White Armchair #2
+111, Dining Chair #1, Dining Room
+112, Dining Chair #2, Dining Room
+113, Dining Table, Dining Room
+114, China Cabinet, Dining Room
+121, Sofa, Living Room
+122, Coffee Table, Living Room
+123, Bed, Bedroom
+123, Dresser, Bedroom
+131, Bookcase (small), Study
+132, Refrigerator, Kitchen
+133, Sink, Kitchen
+134, Oven, Kitchen
+141, Kitchen Table, Kitchen
+142, Pool Table, Game Room
+143, Pinball Machines, Game Room
+144, Bookcase (large), Library
+211, Hot Tub, Gym
+212, Treadmill, Gym
+213, Piano, Music Room
+214, Telescope, Study
+221, Clock, Music Room
+222, Computer, Study
+223, Juke Box, Music Room
+224, Rug, Bedroom
+231, Fireplace, Bedroom
+232, Knight, Bedroom
+233, Television, Game Room
+234, Fish Tank, Library
+241, Floor Lamp, Game Room
+242, Planter, Kitchen
+243, Easel, Library
+244, Black Armchair #1, Study
+311, Black Armchair #2, Study
+312, White Armchair #1, Living Room
+313, White Armchair #2, Living Room
