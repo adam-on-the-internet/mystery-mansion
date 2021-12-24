@@ -1,5 +1,7 @@
 # TODO
 
+- randomize game name
+
 - Create Game File
 - Add Clue Info to Game File
 - Hide The Money
