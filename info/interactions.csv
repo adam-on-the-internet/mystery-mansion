@@ -1,6 +1,6 @@
 type, name, requirement, hint
 
-money,The Money,_person1_ and _item1_,
+money,The Money,_personanditemformoney_,
 clue,Clue #1,,
 clue,Clue #2,,
 clue,Clue #3,,
@@ -30,8 +30,8 @@ private hint L0,Private Hint #4,,the money is NOT in the _furniture_
 private hint L0,Private Hint #5,,the money is NOT in the _room_
 private hint L0,Private Hint #6,,the money is NOT in the _room_
 private hint L0,Private Hint #7,,the money is NOT in the _room_
-private hint L1,Private Hint #8,_item4_, the money is NOT in the _room_
-private hint L1,Private Hint #9,_item3_, to find the money you need the _person_
-private hint L1,Private Hint #10,_person4_, to find the money you need the _item_
-private hint L1,Private Hint #11,_person3_, look for the money in the _room_
-private hint L2,Private Hint #12,_person2_ and _item2_, look for the money in the _furniture_
+private hint L1,Private Hint #8,_personoritemforhint8_, the money is NOT in the _room_
+private hint L1,Private Hint #9,_personoritemforhint9_, to find the money you need the _person_
+private hint L1,Private Hint #10,_personoritemforhint10_, to find the money you need the _item_
+private hint L1,Private Hint #11,_personoritemforhint11_, look for the money in the _room_
+private hint L2,Private Hint #12,_personanditemforhint12_, look for the money in the _furniture_
