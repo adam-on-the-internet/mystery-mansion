@@ -77,10 +77,13 @@ def populate_requirement(interaction, assets):
 
 def populate_hint(interaction, assets):
   # TODO populate hint messages properly
-  interaction.hint = interaction.hint.replace("_room_", "?")
-  interaction.hint = interaction.hint.replace("_furniture_", "?")
-  interaction.hint = interaction.hint.replace("_person_", "?")
-  interaction.hint = interaction.hint.replace("_item_", "?")
+  for asset in assets:
+    asset_name = asset.name
+    clue_name = asset.clue.name
+    if asset_name == "Person for Money":
+      interaction.hint = interaction.hint.replace("_moneyperson_", clue_name)
+    elif asset_name == "Item for Money":
+      interaction.hint = interaction.hint.replace("_moneyitem_", clue_name)
   print("HINT: " + interaction.hint)
 
 def populate_messages(spaces, assets):
