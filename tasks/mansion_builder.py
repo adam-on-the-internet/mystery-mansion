@@ -75,8 +75,7 @@ def populate_requirement(interaction, assets):
     elif asset.name == "Clue for Hint #8":
       interaction.requirement = interaction.requirement.replace("_personoritemforhint8_", clue_name)
 
-def populate_hint(interaction, assets):
-  # TODO populate hint messages properly
+def populate_asset_hint(interaction, assets):
   for asset in assets:
     asset_name = asset.name
     clue_name = asset.clue.name
@@ -84,13 +83,37 @@ def populate_hint(interaction, assets):
       interaction.hint = interaction.hint.replace("_moneyperson_", clue_name)
     elif asset_name == "Item for Money":
       interaction.hint = interaction.hint.replace("_moneyitem_", clue_name)
+
+def get_money_room(spaces):
+  money_furniture = get_money_furniture(spaces)
+  return money_furniture.selected_room
+
+def get_money_furniture(spaces):
+  for space in spaces:
+    for interaction in space.interactions:
+      if interaction.has_money():
+        return interaction.furniture
+
+def populate_space_hint(interaction, spaces):
+  # TODO populate hint messages properly
+  if "_notfurniture_" in interaction.hint:
+    interaction.hint = interaction.hint.replace("_notfurniture_", "?")
+  elif "_notroom_" in interaction.hint:
+    interaction.hint = interaction.hint.replace("_notroom_", "?")
+  elif "_moneyroom_" in interaction.hint:
+    money_room = get_money_room(spaces)
+    interaction.hint = interaction.hint.replace("_moneyroom_", money_room)
+  elif "_moneyfurniture_" in interaction.hint:
+    money_furniture = get_money_furniture(spaces)
+    interaction.hint = interaction.hint.replace("_moneyfurniture_", money_furniture.name)
   print("HINT: " + interaction.hint)
 
 def populate_messages(spaces, assets):
   for space in spaces:
     for interaction in space.interactions:
       if interaction.has_hint():
-        populate_hint(interaction, assets)
+        populate_asset_hint(interaction, assets)
+        populate_space_hint(interaction, spaces)
       if interaction.has_requirement():
         populate_requirement(interaction, assets)
   return spaces

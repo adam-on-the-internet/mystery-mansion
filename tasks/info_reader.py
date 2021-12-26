@@ -24,6 +24,8 @@ class MyInteraction:
     self.requirement = requirement
     self.hint = hint
     self.furniture = furniture
+  def has_money(self):
+    return self.interaction_type == "money"
   def has_hint(self):
     return self.hint.strip() != ""
   def has_requirement(self):
