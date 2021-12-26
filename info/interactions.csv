@@ -31,7 +31,7 @@ private hint L0, Private Hint #5, requires nothing, the money is NOT in the _roo
 private hint L0, Private Hint #6, requires nothing, the money is NOT in the _room_
 private hint L0, Private Hint #7, requires nothing, the money is NOT in the _room_
 private hint L1, Private Hint #8, requires item #4, the money is NOT in the _room_
-private hint L1, Private Hint #9, requires item #3, to find the money, you need the _person_
-private hint L1, Private Hint #10, requires person #4, to find the money, you need the _item_
+private hint L1, Private Hint #9, requires item #3, to find the money you need the _person_
+private hint L1, Private Hint #10, requires person #4, to find the money you need the _item_
 private hint L1, Private Hint #11, requires person #3, look for the money in the _room_
 private hint L2, Private Hint #12, requires person #2 and item #2, look for the money in the _furniture_
