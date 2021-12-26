@@ -1,5 +1,12 @@
 # TODO
 
+## MVP
+
+- populate hints
+- 1 clue per room rule
+
+## Other
+
 - randomize game name
 
 - Next Steps...
