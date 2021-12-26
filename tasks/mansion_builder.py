@@ -9,8 +9,6 @@ def setup_interactions():
   furniture = read_furniture()
   for index, interaction in enumerate(interactions):
     interaction.furniture = furniture[index]
-  # TODO populate hint messages properly
-  # TODO populate requirement messages properly
   return interactions  
 
 def get_rooms():
@@ -26,7 +24,7 @@ def get_locked_spaces(spaces):
   random.shuffle(lockable_spaces)
   return lockable_spaces[:2]  
 
-def populate_spaces(interactions):
+def populate_spaces(interactions, assets):
   rooms = get_rooms()
   spaces = read_spaces()
   locked_spaces = get_locked_spaces(spaces)
@@ -39,12 +37,13 @@ def populate_spaces(interactions):
       interaction_room = interaction.furniture.selected_room.strip().upper()
       if space_room == interaction_room:
         space.interactions.append(interaction)
+  # TODO populate hint messages properly
+  # TODO populate requirement messages properly
   return spaces
 
-def setup_spaces(id):
+def setup_spaces(assets):
   interactions = setup_interactions()
-  spaces = populate_spaces(interactions)
-  describe_spaces(spaces, id)
+  return populate_spaces(interactions, assets)
 
 def describe_spaces(spaces, id):
   lines = ["## Rooms"]
@@ -54,6 +53,7 @@ def describe_spaces(spaces, id):
       lines.append("- " + interaction.to_string())
   add_lines_to_file(lines, id)  
 
-def setup_mansion(id):
+def setup_mansion(id, assets):
   print("preparing mansion...")
-  setup_spaces(id)
+  spaces = setup_spaces(assets)
+  describe_spaces(spaces, id)

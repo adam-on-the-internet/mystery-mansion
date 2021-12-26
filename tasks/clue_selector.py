@@ -21,7 +21,7 @@ def shuffle_cards(clues, id):
   random.shuffle(clues)
   describe_clue_deck(clues, id)
 
-def prepare_clue_deck(id):
+def setup_clues(id):
   print("preparing clues...")
   assets = read_assets()
   random.shuffle(assets)
@@ -77,3 +77,4 @@ def prepare_clue_deck(id):
   all_assets = key_assets + people_assets + item_assets + people_or_item_assets
   describe_assets(all_assets, id)
   shuffle_cards(clues, id)
+  return all_assets
