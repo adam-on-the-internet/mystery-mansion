@@ -1,17 +1,17 @@
-from tasks.game_file_writer import add_line_to_file, add_lines_to_file
+from tasks.game_file_writer import add_lines_to_file
 from tasks.info_reader import read_furniture, read_rooms, read_spaces, read_interactions
 import random
 
-def populate_interactions():
+def setup_interactions():
+  # TODO one clue in each room MAX
   interactions = read_interactions()
   random.shuffle(interactions)
   furniture = read_furniture()
   for index, interaction in enumerate(interactions):
     interaction.furniture = furniture[index]
+  # TODO populate hint messages properly
+  # TODO populate requirement messages properly
   return interactions  
-
-def setup_interactions(id):
-  return populate_interactions()
 
 def get_rooms():
   rooms = read_rooms()
@@ -43,21 +43,18 @@ def populate_spaces(interactions):
   return spaces
 
 def setup_spaces(id):
-  interactions = setup_interactions(id)
-  # TODO one clue in each room MAX
-
+  interactions = setup_interactions()
   spaces = populate_spaces(interactions)
+  describe_spaces(spaces, id)
+
+def describe_spaces(spaces, id):
   lines = ["## Rooms"]
   for space in spaces:
-    lines.append("- " + space.to_string())
+    lines.append("### " + space.to_string())
     for interaction in space.interactions:
-      lines.append("  - " + interaction.to_string())
-  add_lines_to_file(lines, id)
+      lines.append("- " + interaction.to_string())
+  add_lines_to_file(lines, id)  
 
 def setup_mansion(id):
-  print("setting up mansion...")
+  print("preparing mansion...")
   setup_spaces(id)
-  # TODO each HINT interaction needs
-  #   requirement
-  #   type
-  #   message

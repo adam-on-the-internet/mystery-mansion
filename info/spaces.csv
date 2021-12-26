@@ -1,11 +1,11 @@
 game_code, name, canBeLocked
 
-22, 1, true
-21, 2, true
-14, 3, true
-23, 4, true
-31, 5, true
-13, 6, true
-24, 7, true
-11, 8, false
-12, 9, true
+22,1,true
+21,2,true
+14,3,true
+23,4,true
+31,5,true
+13,6,true
+24,7,true
+11,8,false
+12,9,true

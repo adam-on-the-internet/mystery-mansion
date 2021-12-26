@@ -52,7 +52,7 @@ class MySpace:
   def locked_message(self):
     return " [LOCKED]" if self.is_locked else ""
   def to_string(self):
-    return "(" + self.game_code + ") " + self.room.name + self.locked_message()
+    return self.room.name + self.locked_message() + " (" + self.game_code + ")"
 
 class MyRoom:
   def __init__(self, name):

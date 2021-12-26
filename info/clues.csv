@@ -1,12 +1,12 @@
 type, name
 
-key, Rusty Key
-key, Shiny Key
-item, Photos
-item, Map
-item, Tape
-item, Letter
-person, Cook
-person, Chauffeur
-person, Butler
-person, Maid
+key,Rusty Key
+key,Shiny Key
+item,Photos
+item,Map
+item,Tape
+item,Letter
+person,Cook
+person,Chauffeur
+person,Butler
+person,Maid

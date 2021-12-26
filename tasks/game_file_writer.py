@@ -14,7 +14,7 @@ def add_lines_to_file(lines, id):
 
   f.close()
 
-def open_blank_setup_file(id):
+def setup_game_file(id):
   setup_file = get_setup_file_path(id)
   f = open(setup_file, "w")
   f.close()  
@@ -30,13 +30,7 @@ def get_setup_file_path(id):
   game_directory = get_game_directory(id)
   return game_directory + "setup.md"
 
-def initialize_game_file():
-  print("initialize game file...")
-
-  # setup game variables
-  id = str(uuid.uuid4())
-  name = "Find the Money" # TODO randomize game name
-
+def setup_directories(id):
   # verify game directory is setup
   games_directory = get_games_directory()
   make_directory_if_not_exists(games_directory)
@@ -44,13 +38,3 @@ def initialize_game_file():
   # create game directory
   game_directory = get_game_directory(id)
   make_directory_if_not_exists(game_directory)
-
-  # initialize the game file
-  open_blank_setup_file(id)
-  lines = [
-    "# Mystery Mansion: " + name,
-    "id: " + id,
-  ]
-  add_lines_to_file(lines, id)
-
-  return id
