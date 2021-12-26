@@ -78,7 +78,7 @@ def prepare_clue_deck(id):
     "## Clue Setup",
   ]
   for asset in key_assets + people_assets + item_assets + people_or_item_assets:
-    lines.append(" - " + asset.clue.name + " : " + asset.name)
+    lines.append("- " + asset.to_string())
 
   add_lines_to_file(lines, id)
 

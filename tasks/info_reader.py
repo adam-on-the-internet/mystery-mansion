@@ -14,6 +14,8 @@ class MyAsset:
     return self.asset_type == "key"
   def get_is_person_or_item(self):
     return self.asset_type == "person or item"
+  def to_string(self):
+    return self.clue.name + " : " + self.name
 
 class MyInteraction:
   def __init__(self, interaction_type, name, requirement, details, furniture):
