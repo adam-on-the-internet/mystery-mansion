@@ -1,4 +1,5 @@
 from csv import reader
+import random
 
 class MyAsset:
   def __init__(self, name, asset_type, clue):
@@ -23,22 +24,24 @@ class MyInteraction:
     self.furniture = furniture
 
 class MySpace:
-  def __init__(self, game_code, name, can_be_locked, is_locked, room):
+  def __init__(self, game_code, name, can_be_locked, is_locked, room, interactions):
     self.game_code = game_code
     self.name = name
     self.can_be_locked = can_be_locked
     self.is_locked = is_locked
     self.room = room
+    self.interactions = interactions
 
 class MyRoom:
   def __init__(self, name):
     self.name = name
 
 class MyFurniture:
-  def __init__(self, game_code, name, rooms):
+  def __init__(self, game_code, name, rooms, selected_room):
     self.game_code = game_code
     self.name = name
     self.rooms = rooms
+    self.selected_room = selected_room
 
 class MyClue:
   def __init__(self, clue_type, name):
@@ -86,7 +89,7 @@ def read_spaces():
         game_code = row[0].strip()
         name = row[1].strip()
         can_be_locked = row[2].strip() == "true"
-        mySpace = MySpace(game_code, name, can_be_locked, False, '')
+        mySpace = MySpace(game_code, name, can_be_locked, False, '', '')
         spaces.append(mySpace)
     return spaces
 
@@ -113,7 +116,10 @@ def read_furniture():
         game_code = row[0].strip()
         name = row[1].strip()
         rooms = row[2].strip()
-        myFurniture = MyFurniture(game_code, name, rooms)
+        available_rooms = rooms.split("|")
+        random.shuffle(available_rooms)
+        selected_room = available_rooms[0].strip()
+        myFurniture = MyFurniture(game_code, name, rooms, selected_room)
         furniture.append(myFurniture)
     
     return furniture[:35]
