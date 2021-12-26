@@ -24,7 +24,7 @@ def get_locked_spaces(spaces):
   random.shuffle(lockable_spaces)
   return lockable_spaces[:2]  
 
-def populate_spaces(interactions, assets):
+def populate_spaces(interactions):
   rooms = get_rooms()
   spaces = read_spaces()
   locked_spaces = get_locked_spaces(spaces)
@@ -37,13 +37,23 @@ def populate_spaces(interactions, assets):
       interaction_room = interaction.furniture.selected_room.strip().upper()
       if space_room == interaction_room:
         space.interactions.append(interaction)
-  # TODO populate hint messages properly
-  # TODO populate requirement messages properly
+  return spaces
+
+def populate_messages(spaces, assets):
+  for space in spaces:
+    for interaction in space.interactions:
+      if interaction.has_hint():
+        print("HINT: " + interaction.hint)
+        # TODO populate hint messages properly
+      if interaction.has_requirement():
+        # TODO populate requirement messages properly
+        print("REQUIREMENT: " + interaction.requirement)
   return spaces
 
 def setup_spaces(assets):
   interactions = setup_interactions()
-  return populate_spaces(interactions, assets)
+  spaces = populate_spaces(interactions)
+  return populate_messages(spaces, assets)
 
 def describe_spaces(spaces, id):
   lines = ["## Rooms"]
