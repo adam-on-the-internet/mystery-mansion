@@ -14,9 +14,9 @@ def shuffle_cards(clues, id):
 def prepare_clue_deck(id):
   print("preparing clue deck...")
   assets = read_assets()
+  random.shuffle(assets)
   
   clues = read_clues()
-  random.shuffle(clues)
 
   # assign keys to key assets
   key_clues = []
@@ -30,7 +30,7 @@ def prepare_clue_deck(id):
       key_assets.append(asset)
 
   for index, asset in enumerate(key_assets):
-    asset.clue_name = key_clues[index].name
+    asset.clue = key_clues[index]
 
   # assign people to people assets
   people_clues = []
@@ -44,7 +44,7 @@ def prepare_clue_deck(id):
       people_assets.append(asset)
 
   for index, asset in enumerate(people_assets):
-    asset.clue_name = people_clues[index].name
+    asset.clue = people_clues[index]
 
   # assign item to item assets
   item_clues = []
@@ -58,7 +58,7 @@ def prepare_clue_deck(id):
       item_assets.append(asset)
 
   for index, asset in enumerate(item_assets):
-    asset.clue_name = item_clues[index].name
+    asset.clue = item_clues[index]
 
   # assign remaining clues to remaining assets
   remaining_people = people_clues[-2:]
@@ -72,13 +72,13 @@ def prepare_clue_deck(id):
       people_or_item_assets.append(asset)
 
   for index, asset in enumerate(people_or_item_assets):
-    asset.clue_name = remaining_clues[index].name
+    asset.clue = remaining_clues[index]
 
   lines = [
     "## Clue Setup",
   ]
   for asset in key_assets + people_assets + item_assets + people_or_item_assets:
-    lines.append(" - " + asset.name + " : " + asset.clue_name)
+    lines.append(" - " + asset.clue.name + " : " + asset.name)
 
   add_lines_to_file(lines, id)
 

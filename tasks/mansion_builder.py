@@ -4,17 +4,17 @@ import random
 
 def populate_interactions():
   interactions = read_interactions()
+  random.shuffle(interactions)
   furniture = read_furniture()
-  random.shuffle(furniture)
   for index, interaction in enumerate(interactions):
-    interaction.furniture_name = furniture[index].name
+    interaction.furniture = furniture[index]
   return interactions  
 
 def setup_interactions(id):
   interactions = populate_interactions()
   lines = []
   for interaction in interactions:
-    lines.append("- " + interaction.name + " : " + interaction.furniture_name)
+    lines.append("- " + interaction.furniture.name + " : " + interaction.name)
   add_line_to_file("## Furniture", id)
   add_lines_to_file(lines, id)
   return interactions
@@ -39,7 +39,7 @@ def populate_spaces():
 
   for index, space in enumerate(spaces):
     space.is_locked = space.name in locked_spaces
-    space.room_name = rooms[index].name
+    space.room = rooms[index]
   return spaces
 
 def setup_spaces(id):
@@ -50,7 +50,7 @@ def setup_spaces(id):
   lines = []
   for space in spaces:
     locked_message = " [LOCKED]" if space.is_locked else ""
-    lines.append("- (" + space.game_code + ") " + space.room_name + locked_message)
+    lines.append("- (" + space.game_code + ") " + space.room.name + locked_message)
 
   add_line_to_file("## Rooms", id)
   add_lines_to_file(lines, id)

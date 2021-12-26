@@ -1,10 +1,10 @@
 from csv import reader
 
 class MyAsset:
-  def __init__(self, name, asset_type, clue_name):
+  def __init__(self, name, asset_type, clue):
     self.name = name
     self.asset_type = asset_type
-    self.clue_name = clue_name
+    self.clue = clue
   def get_is_person(self):
     return self.asset_type == "person"
   def get_is_item(self):
@@ -15,20 +15,20 @@ class MyAsset:
     return self.asset_type == "person or item"
 
 class MyInteraction:
-  def __init__(self, interaction_type, name, requirement, details, furniture_name):
+  def __init__(self, interaction_type, name, requirement, details, furniture):
     self.interaction_type = interaction_type
     self.name = name
     self.requirement = requirement
     self.details = details
-    self.furniture_name = furniture_name
+    self.furniture = furniture
 
 class MySpace:
-  def __init__(self, game_code, name, can_be_locked, is_locked, room_name):
+  def __init__(self, game_code, name, can_be_locked, is_locked, room):
     self.game_code = game_code
     self.name = name
     self.can_be_locked = can_be_locked
     self.is_locked = is_locked
-    self.room_name = room_name
+    self.room = room
 
 class MyRoom:
   def __init__(self, name):
