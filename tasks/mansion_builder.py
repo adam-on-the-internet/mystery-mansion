@@ -49,10 +49,9 @@ def setup_spaces(id):
   spaces = populate_spaces(interactions)
   lines = ["## Rooms"]
   for space in spaces:
-    locked_message = " [LOCKED]" if space.is_locked else ""
-    lines.append("- (" + space.game_code + ") " + space.room.name + locked_message)
+    lines.append("- " + space.to_string())
     for interaction in space.interactions:
-      lines.append("  - " + interaction.furniture.name + " : " + interaction.name)
+      lines.append("  - " + interaction.to_string())
   add_lines_to_file(lines, id)
 
 def setup_mansion(id):

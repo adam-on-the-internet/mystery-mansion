@@ -22,6 +22,8 @@ class MyInteraction:
     self.requirement = requirement
     self.details = details
     self.furniture = furniture
+  def to_string(self):
+    return self.furniture.name + " : " + self.name
 
 class MySpace:
   def __init__(self, game_code, name, can_be_locked, is_locked, room, interactions):
@@ -31,6 +33,9 @@ class MySpace:
     self.is_locked = is_locked
     self.room = room
     self.interactions = interactions
+  def to_string(self):
+    locked_message = " [LOCKED]" if self.is_locked else ""
+    return "(" + self.game_code + ") " + self.room.name + locked_message
 
 class MyRoom:
   def __init__(self, name):
