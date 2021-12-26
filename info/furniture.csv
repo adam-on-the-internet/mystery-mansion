@@ -25,11 +25,11 @@ code, name, rooms
 223, Juke Box, Music Room
 224, Rug, Bedroom
 231, Fireplace, Bedroom
-232, Knight, Bedroom
+232, Knight, Bedroom | Library
 233, Television, Game Room
-234, Fish Tank, Library
-241, Floor Lamp, Game Room
-242, Planter, Kitchen
+234, Fish Tank, Library | Gym
+241, Floor Lamp, Game Room | Gym
+242, Planter, Kitchen | Music Room
 243, Easel, Library
 244, Black Armchair #1, Study
 311, Black Armchair #2, Study

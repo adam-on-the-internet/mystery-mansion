@@ -11,13 +11,7 @@ def populate_interactions():
   return interactions  
 
 def setup_interactions(id):
-  interactions = populate_interactions()
-  lines = []
-  for interaction in interactions:
-    lines.append("- " + interaction.furniture.name + " : " + interaction.name + " : " + interaction.furniture.selected_room)
-  add_line_to_file("## Furniture", id)
-  add_lines_to_file(lines, id)
-  return interactions
+  return populate_interactions()
 
 def get_rooms():
   rooms = read_rooms()
@@ -42,8 +36,9 @@ def populate_spaces(interactions):
     space.room = rooms[index]
     space.interactions = []
     for interaction in interactions:
-      if space.room.name in interaction.furniture.rooms:
-        # TODO handle if multiple rooms are available...
+      space_room = space.room.name.strip().upper()
+      interaction_room = interaction.furniture.selected_room.strip().upper()
+      if space_room == interaction_room:
         space.interactions.append(interaction)
   return spaces
 
@@ -57,14 +52,12 @@ def setup_spaces(id):
     locked_message = " [LOCKED]" if space.is_locked else ""
     lines.append("- (" + space.game_code + ") " + space.room.name + locked_message)
     for interaction in space.interactions:
-      lines.append("  - " + interaction.furniture.name)
+      lines.append("  - " + interaction.furniture.name + " : " + interaction.name)
   add_lines_to_file(lines, id)
 
 def setup_mansion(id):
   print("setting up mansion...")
   setup_spaces(id)
-  # TODO each room needs:
-  #   furniture
   # TODO each HINT interaction needs
   #   requirement
   #   type
