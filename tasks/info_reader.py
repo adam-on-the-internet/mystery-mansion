@@ -18,14 +18,28 @@ class MyAsset:
     return self.clue.name + " : " + self.name
 
 class MyInteraction:
-  def __init__(self, interaction_type, name, requirement, details, furniture):
+  def __init__(self, interaction_type, name, requirement, hint, furniture):
     self.interaction_type = interaction_type
     self.name = name
     self.requirement = requirement
-    self.details = details
+    self.hint = hint
     self.furniture = furniture
+  def has_hint(self):
+    return self.hint.strip() != ""
+  def has_requirement(self):
+    return self.requirement.strip() != ""
+  def hint_message(self):
+    if self.has_hint():
+      return " [HINT: " + self.hint + "]"
+    else:
+      return ""
+  def requirement_message(self):
+    if self.has_requirement():
+      return " [REQUIREMENT: " + self.requirement + "]"
+    else:
+      return ""
   def to_string(self):
-    return self.furniture.name + " : " + self.name
+    return self.furniture.name + " : " + self.name + self.requirement_message() + self.hint_message()
 
 class MySpace:
   def __init__(self, game_code, name, can_be_locked, is_locked, room, interactions):
@@ -35,9 +49,10 @@ class MySpace:
     self.is_locked = is_locked
     self.room = room
     self.interactions = interactions
+  def locked_message(self):
+    return " [LOCKED]" if self.is_locked else ""
   def to_string(self):
-    locked_message = " [LOCKED]" if self.is_locked else ""
-    return "(" + self.game_code + ") " + self.room.name + locked_message
+    return "(" + self.game_code + ") " + self.room.name + self.locked_message()
 
 class MyRoom:
   def __init__(self, name):
@@ -82,8 +97,8 @@ def read_interactions():
         interaction_type = row[0].strip()
         name = row[1].strip()
         requirement = row[2].strip()
-        details = row[3].strip()
-        myInteraction = MyInteraction(interaction_type, name, requirement, details, '')
+        hint = row[3].strip()
+        myInteraction = MyInteraction(interaction_type, name, requirement, hint, '')
         interactions.append(myInteraction)
     return interactions  
 
