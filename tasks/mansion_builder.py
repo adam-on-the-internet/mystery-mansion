@@ -30,7 +30,6 @@ def populate_spaces(interactions):
   rooms = get_rooms()
   spaces = read_spaces()
   locked_spaces = get_locked_spaces(spaces)
-
   for index, space in enumerate(spaces):
     space.is_locked = space.name in locked_spaces
     space.room = rooms[index]

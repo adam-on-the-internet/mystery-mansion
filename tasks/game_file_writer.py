@@ -7,11 +7,9 @@ def add_line_to_file(line, id):
 def add_lines_to_file(lines, id):
   setup_file = get_setup_file_path(id)
   f = open(setup_file, "a")
-  
   for line in lines:
     f.write(line)
     f.write("\n\n")
-
   f.close()
 
 def setup_game_file(id):

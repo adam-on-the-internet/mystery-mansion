@@ -124,15 +124,12 @@ def read_rooms():
         name = row[0].strip()
         myRoom = MyRoom(name)
         rooms.append(myRoom)
-    
     return rooms[:9] 
 
 def read_furniture():
   with open("./info/furniture.csv", newline='') as furniture_file:
     furniture_reader = reader(furniture_file, delimiter=',')
-
     furniture = []
-
     for index, row in enumerate(furniture_reader):
       if index > 0 and len(row) > 0:
         game_code = row[0].strip()
@@ -143,22 +140,18 @@ def read_furniture():
         selected_room = available_rooms[0].strip()
         myFurniture = MyFurniture(game_code, name, rooms, selected_room)
         furniture.append(myFurniture)
-    
     return furniture[:35]
 
 def read_clues():
   with open("./info/clues.csv", newline='') as clue_file:
     clue_reader = reader(clue_file, delimiter=',')
-
     clues = []
-
     for index, row in enumerate(clue_reader):
       if index > 0 and len(row) > 0:
         clue_type = row[0].strip()
         name = row[1].strip()
         myClue = MyClue(clue_type, name)
         clues.append(myClue)
-    
     sorted_clues = []
     key_count = 0
     item_count = 0
@@ -173,5 +166,4 @@ def read_clues():
       elif clue.get_is_person() and person_count < 4:
         sorted_clues.append(clue)
         person_count = person_count + 1
-
     return sorted_clues
