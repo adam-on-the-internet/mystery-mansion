@@ -12,7 +12,7 @@
 
 - Next Steps...
   - Game Upload
-  - Playable Game
+  - Playable Game in browser
   - Twitter Bot?
 
 - original version: just use default rooms, furniture, etc

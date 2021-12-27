@@ -6,10 +6,12 @@ class MyMansion:
     self.code_history = code_history
     self.game_over = game_over
   def answer_question(self, code, answers):
+    if len(answers) == 0:
+      return "Invalid input."
     recent_answer = answers[-1]
-    if "n" in answers:
+    if False in answers:
       return "Sorry..."
-    elif recent_answer != "y" or len(answers) > 2:
+    elif len(answers) > 2:
       return "The provided answer(s) is invalid."
     else:
       return self.check_code_with_answers(code, answers)
@@ -88,9 +90,8 @@ class MyInteraction:
   def to_string(self):
     return self.furniture.name + " (code " + self.furniture.game_code + ") : " + self.name + self.requirement_message() + self.hint_message()
   def get_message(self, answers):
-    # TODO handle y & yy checks 
     completed_checks = len(answers)
-    recent_check_passed = completed_checks > 0 and answers[-1] == "y"
+    recent_check_passed = completed_checks > 0 and answers[-1]
 
     show_full_message = (not self.has_requirement()) or (self.has_single_requirement() and completed_checks == 1 and recent_check_passed) or (self.has_double_requirement() and completed_checks == 2 and recent_check_passed)
 
@@ -137,7 +138,7 @@ class MySpace:
     self.is_locked = False
   def get_message(self, answers):
     # unlock door if possible
-    should_unlock = self.is_locked and len(answers) == 1 and answers[0] == "y" 
+    should_unlock = self.is_locked and len(answers) == 1 and answers[0]
     if should_unlock:
       self.unlock_door()
 
