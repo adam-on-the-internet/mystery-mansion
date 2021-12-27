@@ -8,7 +8,7 @@ print()
 money_is_hidden = True #TODO end game when money is found
 message = ""
 code = ""
-answer = ""
+answers = []
 
 while money_is_hidden:
   if message == "":
@@ -18,16 +18,17 @@ while money_is_hidden:
     # TODO resolve single question (y/n)
     # TODO resolve double question (y/n)
     answer = input("Answer (y/n):  ").lower()
-    message = mansion.answer_question(code, answer)
+    answers.push(answer)
+    message = mansion.answer_question(code, answers)
   else:
     # resolve room or furniture code
     code = input("Enter code:  ")
-    answer = ""
+    answers = []
     message = mansion.check_code(code)
   
   print()
-  print("INPUT Code  : " + code)
-  print("INPUT Answer: " + answer)
+  print("INPUT Code   : " + code)
+  print("INPUT Answers: " + answers)
   
   print()
   print(message)

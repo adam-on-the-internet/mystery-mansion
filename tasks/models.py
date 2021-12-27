@@ -4,7 +4,7 @@ class MyMansion:
     self.assets = assets
     self.spaces = spaces
     self.code_history = code_history
-  def answer_question(self, code, answer):
+  def answer_question(self, code, answers):
     # TODO handle y/n checks 
     return "..."
   def check_code(self, code):
