@@ -5,21 +5,10 @@ import random
 def describe_assets(assets, id):
   lines = [
     "## Clues",
-    "### Setup",
   ]
   for asset in assets:
     lines.append("- " + asset.to_string())
   add_lines_to_file(lines, id)
-
-def describe_clue_deck(clues, id):
-  lines = ["### Deck"]
-  for clue in clues:
-    lines.append("- " + clue.name)
-  add_lines_to_file(lines, id)
-
-def shuffle_cards(clues, id):
-  random.shuffle(clues)
-  describe_clue_deck(clues, id)
 
 def setup_clues(id):
   assets = read_assets()
@@ -75,5 +64,4 @@ def setup_clues(id):
     asset.clue = remaining_clues[index]
   all_assets = key_assets + people_assets + item_assets + people_or_item_assets
   describe_assets(all_assets, id)
-  shuffle_cards(clues, id)
   return all_assets

@@ -2,7 +2,13 @@ from tasks.game_generator import generate_game
 import random
 
 def print_help():
-  print("You can enter these options: 'clear', 'map', 'furniture'")
+  print()
+  print("You can enter these options:")
+  print(" - clear")
+  print(" - map")
+  print(" - furniture")
+  print(" - rules")
+  print()
 
 def print_map():
   print()
@@ -22,6 +28,11 @@ def print_map():
   print("|      |      |      |")
   print("0---------xx---------0")
   print("       |start |       ")
+  print()
+
+def print_rules():
+  print()
+  print("Rules available here: https://www.hasbro.com/common/instruct/Mystery_Mansion_(1996).PDF")
   print()
 
 def print_furniture():
@@ -65,6 +76,7 @@ print()
 print("Welcome to Mystery Mansion!")
 print()
 print_map()
+print_rules()
 
 while not mansion.game_over:
   message = ""
@@ -79,6 +91,8 @@ while not mansion.game_over:
     code = input("Enter code:\n").lower()
     if code == "help":
       print_help()
+    elif code == "rules":
+      print_rules()
     elif code == "map":
       print_map()
     elif code == "clear":
