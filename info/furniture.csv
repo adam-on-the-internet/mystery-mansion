@@ -1,37 +1,37 @@
-code, name, rooms
+code,name,rooms,linked code, linked text
 
-111,Dining Room Chair #1,Dining Room
-112,Dining Room Chair #2,Dining Room
-113,Dining Room Table,Dining Room
-114,China Cabinet,Dining Room
-121,Sofa,Living Room
-122,Coffee Table,Living Room
-123,Bed,Bedroom
-124,Dresser,Bedroom
-131,Small Bookcase,Study|Bedroom
-132,Refrigerator,Kitchen
-133,Sink,Kitchen
-134,Oven,Kitchen
-141,Kitchen Table,Kitchen
-142,Pool Table,Game Room
-143,Pinball Machines,Game Room
-144,Large Bookcase,Library
-211,Hot Tub,Gym
-212,Treadmill,Gym
-213,Piano,Music Room
-214,Telescope,Study
-221,Clock,Music Room
-222,Computer,Study
-223,Juke Box,Music Room
-224,Rug,Bedroom
-231,Fireplace,Bedroom
-232,Knight,Bedroom|Library
-233,Television,Game Room
-234,Fish Tank,Library|Gym
-241,Floor Lamp,Game Room|Gym
-242,Planter,Kitchen|Music Room
-243,Easel,Library
-244,Black Armchair #1,Study
-311,Black Armchair #2,Study
-312,White Armchair #1,Living Room
-313,White Armchair #2,Living Room
+111,Dining Room Chair #1,Dining Room,122,Two Dining Room Chairs
+112,Dining Room Chair #2,Dining Room,0,
+113,Dining Room Table,Dining Room,,
+114,China Cabinet,Dining Room,,
+121,Sofa,Living Room,,
+122,Coffee Table,Living Room,,
+123,Bed,Bedroom,,
+124,Dresser,Bedroom,,
+131,Small Bookcase,Study|Bedroom,,
+132,Refrigerator,Kitchen,,
+133,Sink,Kitchen,,
+134,Oven,Kitchen,,
+141,Kitchen Table,Kitchen,,
+142,Pool Table,Game Room,,
+143,Pinball Machines,Game Room,,
+144,Large Bookcase,Library,,
+211,Hot Tub,Gym,,
+212,Treadmill,Gym,,
+213,Piano,Music Room,,
+214,Telescope,Study,,
+221,Clock,Music Room,,
+222,Computer,Study,,
+223,Juke Box,Music Room,,
+224,Rug,Bedroom,,
+231,Fireplace,Bedroom,,
+232,Knight,Bedroom|Library,,
+233,Television,Game Room,,
+234,Fish Tank,Library|Gym,,
+241,Floor Lamp,Game Room|Gym,,
+242,Planter,Kitchen|Music Room,,
+243,Easel,Library,,
+244,Black Armchair #1,Study,311,Two Black Armchairs
+311,Black Armchair #2,Study,0,
+312,White Armchair #1,Living Room,313, Two White Armchairs
+313,White Armchair #2,Living Room,0,

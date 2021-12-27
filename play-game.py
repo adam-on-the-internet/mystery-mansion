@@ -4,30 +4,12 @@ import random
 def print_help():
   print()
   print("You can enter these options:")
-  print(" - clear")
-  print(" - map")
-  print(" - furniture")
-  print(" - rules")
-  print()
-
-def print_map():
-  print()
-  print("Here's the Map of Mystery Mansion:")
-  print()
-  print("0--------------------0")
-  print("|      |      |      |")
-  print("|  22  x  21  x  14  |")
-  print("|      |      |      |")
-  print("0--xx-----xx-----xx--0")
-  print("|      |      |      |")
-  print("|  23  x  31  x  13  |")
-  print("|      |      |      |")
-  print("0--xx-----xx-----xx--0")
-  print("|      |      |      |")
-  print("|  24  x  11  x  12  |")
-  print("|      |      |      |")
-  print("0---------xx---------0")
-  print("       |start |       ")
+  print(" - clear      : CLEAR the terminal.")
+  print(" - map        : Display a MAP of the mansion.")
+  print(" - furniture  : Display the FURNITURE available in this game.")
+  print(" - rooms      : Display the ROOMS available in this game.")
+  print(" - clues      : Display the CLUES available in this game.")
+  print(" - rules      : Display a link to the RULES Online.")
   print()
 
 def print_rules():
@@ -75,7 +57,7 @@ answers = []
 print()
 print("Welcome to Mystery Mansion!")
 print()
-print_map()
+mansion.print_map()
 print_rules()
 
 while not mansion.game_over:
@@ -87,18 +69,22 @@ while not mansion.game_over:
     answers.append(requirement_met)
     message = mansion.answer_question(code, answers)
   else:
-    print("Enter a Room Code, Furniture Code, or 'HELP' for more options.")
+    print("Enter a Room Code, Furniture Code, or 'help' for more options.")
     code = input("Enter code:\n").lower()
     if code == "help":
       print_help()
     elif code == "rules":
       print_rules()
-    elif code == "map":
-      print_map()
     elif code == "clear":
       print_clear()
+    elif code == "map":
+      mansion.print_map()
     elif code == "furniture":
-      print_furniture()
+      mansion.print_available_furniture()
+    elif code == "rooms":
+      mansion.print_available_rooms()
+    elif code == "clues":
+      mansion.print_available_clues()
     else:
       answers = []
       message = mansion.check_code(code)

@@ -61,10 +61,12 @@ def read_furniture():
         game_code = row[0].strip()
         name = row[1].strip()
         rooms = row[2].strip()
+        linked_code = row[3].strip()
+        linked_text = row[4].strip()
         available_rooms = rooms.split("|")
         random.shuffle(available_rooms)
         selected_room = available_rooms[0].strip()
-        myFurniture = MyFurniture(game_code, name, rooms, selected_room)
+        myFurniture = MyFurniture(game_code, name, rooms, linked_code, linked_text, selected_room)
         furniture.append(myFurniture)
     return furniture[:35]
 

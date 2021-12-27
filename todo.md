@@ -2,8 +2,12 @@
 
 ## Command-Line Playable
 
-- include room code & furniture code in helpful spots
 - furniture list
+- include room code for chairs #2
+
+- "discoverable" rooms
+- mark discoverable rooms in Mansion Map
+- show discovered rooms & items w/ help?
 
 - when you enter a room, list rooms you can enter from that room?
 - printed map within Mansion class, show some info

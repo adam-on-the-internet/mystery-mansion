@@ -6,6 +6,51 @@ class MyMansion:
     self.code_history = code_history
     self.game_over = game_over
     self.clues_taken = clues_taken
+  def print_available_clues(self):
+    print()
+    print("Available Clues:")
+    print("----------------")
+    for asset in self.assets:
+      print(asset.clue.name)
+    print()
+    print("Clues taken: " + str(self.clues_taken))
+    print("Clues left: " + str(len(self.assets) - self.clues_taken))
+    print()
+  def print_available_rooms(self):
+    print()
+    print("Available Rooms:")
+    print("----------------")
+    print()
+    for space in self.spaces:
+      print(space.room.name)
+    print()
+  def print_available_furniture(self):
+    print()
+    print("Available Furniture:")
+    print("----------------")
+    for space in self.spaces:
+      for interaction in space.interactions:
+        print(interaction.furniture.name + " " + interaction.furniture.game_code)
+    print()
+  def print_map(self):
+    print()
+    print("Here's the Map of Mystery Mansion:")
+    print()
+    print("0--------------------0")
+    print("|      |      |      |")
+    print("|  22  x  21  x  14  |")
+    print("|      |      |      |")
+    print("0--xx-----xx-----xx--0")
+    print("|      |      |      |")
+    print("|  23  x  31  x  13  |")
+    print("|      |      |      |")
+    print("0--xx-----xx-----xx--0")
+    print("|      |      |      |")
+    print("|  24  x  11  x  12  |")
+    print("|      |      |      |")
+    print("0---------xx---------0")
+    print("       |start |       ")
+    print()
   def take_clue(self):
     self.clues_taken = self.clues_taken + 1
   def answer_question(self, code, answers):
@@ -167,13 +212,13 @@ class MySpace:
       message = "This is the " + self.room.name + ". You see the following:"
       for interaction in self.interactions:
         interaction.discover()
-        furniture_name = interaction.furniture.name
-        furniture_code = interaction.furniture.game_code
-        if not "#2" in furniture_name:
-          if "#1" in furniture_name:
-            furniture_name = furniture_name.replace(" #1", "")
-            furniture_name = "Two " + furniture_name + "s"
-            furniture_code = furniture_code + " & ?"
+        furniture = interaction.furniture
+        furniture_name = furniture.name
+        furniture_code = furniture.game_code
+        if furniture.linked_code != "0":
+          if furniture.linked_code != "":
+            furniture_name = furniture.linked_text
+            furniture_code = furniture_code + " & " + furniture.linked_code
           message = message + "\n - " + furniture_name + " (" + furniture_code + ")"
     return "Room " + self.game_code + " : " + message
 
@@ -182,10 +227,12 @@ class MyRoom:
     self.name = name
 
 class MyFurniture:
-  def __init__(self, game_code, name, rooms, selected_room):
+  def __init__(self, game_code, name, rooms, linked_code, linked_text, selected_room):
     self.game_code = game_code
     self.name = name
     self.rooms = rooms
+    self.linked_code = linked_code
+    self.linked_text = linked_text
     self.selected_room = selected_room
 
 class MyClue:
