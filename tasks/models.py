@@ -4,7 +4,10 @@ class MyMansion:
     self.assets = assets
     self.spaces = spaces
   def check_code(self, code):
-    return "Entered code: " + code
+    # TODO check room
+    # TODO check furniture
+    # TODO handle y/n checks 
+    return "That code is invalid."
 
 class MyAsset:
   def __init__(self, name, asset_type, clue):
