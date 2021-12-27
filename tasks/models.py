@@ -5,13 +5,21 @@ class MyMansion:
     self.spaces = spaces
     self.code_history = code_history
   def answer_question(self, code, answers):
-    # TODO handle y/n checks 
-    return "..."
+    recent_answer = answers[-1]
+    if recent_answer == "y":
+      return self.check_code_with_answers(code, answers)
+    elif recent_answer == "n":
+      return "Sorry..."
+    else:
+      return "That answer is invalid."
   def check_code(self, code):
+    return self.check_code_with_answers(code, [])
+  def check_code_with_answers(self, code, answers):
+    # TODO handle y & yy checks 
     message = ""
     for space in self.spaces:
       if space.game_code == code:
-        message = space.get_message()
+        message = space.get_message(answers)
       else:
         for interaction in space.interactions:
           if interaction.furniture.game_code == code:
@@ -20,7 +28,7 @@ class MyMansion:
       message = "That code is invalid."
     else:
       self.code_history.append(code)
-    return message
+    return message   
 
 class MyAsset:
   def __init__(self, name, asset_type, clue):
@@ -85,8 +93,15 @@ class MySpace:
     return " [LOCKED]" if self.is_locked else ""
   def to_string(self):
     return self.room.name + self.locked_message() + " (code " + self.game_code + ")"
-  def get_message(self):
-    # TODO handle unlocking a locked room
+  def unlock_door(self):
+    self.is_locked = False
+  def get_message(self, answers):
+    # unlock door if possible
+    should_unlock = self.is_locked and len(answers) == 1 and answers[0] == "y" 
+    if should_unlock:
+      self.unlock_door()
+
+    # check door lock
     message = ""
     if self.is_locked:
       message = "This room is LOCKED. Do you have a KEY?"

@@ -2,9 +2,8 @@
 
 ## Command-Line Playable
 
-- handle unlocking a locked room
-- resolve single question
-- resolve double question
+- resolve single question interaction
+- resolve double question interaction
 - handle y/n checks
 - handle interaction requirements
 - handle furniture message

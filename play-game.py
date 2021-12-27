@@ -18,7 +18,7 @@ while money_is_hidden:
     # TODO resolve single question (y/n)
     # TODO resolve double question (y/n)
     answer = input("Answer (y/n):  ").lower()
-    answers.push(answer)
+    answers.append(answer)
     message = mansion.answer_question(code, answers)
   else:
     # resolve room or furniture code
@@ -28,7 +28,7 @@ while money_is_hidden:
   
   print()
   print("INPUT Code   : " + code)
-  print("INPUT Answers: " + answers)
+  print("INPUT Answers: " + str(answers))
   
   print()
   print(message)
