@@ -10,6 +10,7 @@ def print_help():
   print(" - rooms      : Display the ROOMS available in this game.")
   print(" - clues      : Display the CLUES available in this game.")
   print(" - rules      : Display a link to the RULES Online.")
+  print(" - exit       : EXIT the game.")
   print()
 
 def print_rules():
