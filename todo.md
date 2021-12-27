@@ -2,24 +2,17 @@
 
 ## Command-Line Playable
 
-- furniture list
-- include room code for chairs #2
-
-- "discoverable" rooms
-- mark discoverable rooms in Mansion Map
-- show discovered rooms & items w/ help?
-
-- when you enter a room, list rooms you can enter from that room?
-- printed map within Mansion class, show some info
-- start up questions, like playable deck
 - use four-letter code instead of full uuid
-- at the start, provide a furniture key list
-- allow drawing clues... for people who don't have the physical game. or just provide manual setup
 
-## Other
+## Logging
 
 - add overall game log
 - add game log file
+
+## Other
+
+- more setup steps?
+- when you enter a room, list rooms you can enter from that room?
 - randomize game name
 
 - Next Steps...

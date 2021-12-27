@@ -37,7 +37,7 @@ def read_spaces():
         game_code = row[0].strip()
         name = row[1].strip()
         can_be_locked = row[2].strip() == "true"
-        mySpace = MySpace(game_code, name, can_be_locked, False, '', '')
+        mySpace = MySpace(game_code, name, can_be_locked, False, '', '', False)
         spaces.append(mySpace)
     return spaces
 

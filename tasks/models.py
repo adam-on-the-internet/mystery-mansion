@@ -13,44 +13,53 @@ class MyMansion:
     for asset in self.assets:
       print(asset.clue.name)
     print()
-    print("Clues taken: " + str(self.clues_taken))
-    print("Clues left: " + str(len(self.assets) - self.clues_taken))
-    print()
+    print("Clues taken: " + str(self.clues_taken) + " of " + str(len(self.assets)))
   def print_available_rooms(self):
     print()
     print("Available Rooms:")
     print("----------------")
     print()
     for space in self.spaces:
-      print(space.room.name)
-    print()
+      if space.discovered:
+        print(space.room.name + " (" + space.game_code + ")")
+      else:
+        print("???")
   def print_available_furniture(self):
     print()
     print("Available Furniture:")
     print("----------------")
     for space in self.spaces:
       for interaction in space.interactions:
-        print(interaction.furniture.name + " " + interaction.furniture.game_code)
-    print()
+        if interaction.discovered:
+          print(interaction.furniture.name + " (" + interaction.furniture.game_code + ")")
+        else:
+          print("???")
+  def check_space_discovery(self, space_code):
+    for space in self.spaces:
+      if str(space.game_code) == str(space_code):
+        if space.discovered:
+          return " "
+        else:
+          return "?"
+    return "!"
   def print_map(self):
     print()
     print("Here's the Map of Mystery Mansion:")
-    print()
-    print("0--------------------0")
-    print("|      |      |      |")
-    print("|  22  x  21  x  14  |")
-    print("|      |      |      |")
-    print("0--xx-----xx-----xx--0")
-    print("|      |      |      |")
-    print("|  23  x  31  x  13  |")
-    print("|      |      |      |")
-    print("0--xx-----xx-----xx--0")
-    print("|      |      |      |")
-    print("|  24  x  11  x  12  |")
-    print("|      |      |      |")
-    print("0---------xx---------0")
-    print("       |start |       ")
-    print()
+    print("          ______          ")
+    print("0--------/      \--------0")
+    print("|       |        |       |")
+    print("| 22 " + self.check_space_discovery(22) + "  x  21 " + self.check_space_discovery(21) + "  x 14 " + self.check_space_discovery(14) + "  |")
+    print("|       |        |       |")
+    print("0---xx------xx------xx---0")
+    print("|       |        |       |")
+    print("| 23 " + self.check_space_discovery(23) + "  x  31 " + self.check_space_discovery(31) + "  x 13 " + self.check_space_discovery(13) + "  |")
+    print("|       |        |       |")
+    print("0---xx------xx------xx---0")
+    print("|       |        |       |")
+    print("| 24 " + self.check_space_discovery(24) + "  x  11 " + self.check_space_discovery(11) + "  x 12 " + self.check_space_discovery(12) + "  |")
+    print("|       |        |       |")
+    print("0-----------xx-----------0")
+    print("        | start  |       ")
   def take_clue(self):
     self.clues_taken = self.clues_taken + 1
   def answer_question(self, code, answers):
@@ -187,13 +196,16 @@ class MyInteraction:
     return self.furniture.name + " : " + message
 
 class MySpace:
-  def __init__(self, game_code, name, can_be_locked, is_locked, room, interactions):
+  def __init__(self, game_code, name, can_be_locked, is_locked, room, interactions, discovered):
     self.game_code = game_code
     self.name = name
     self.can_be_locked = can_be_locked
     self.is_locked = is_locked
     self.room = room
     self.interactions = interactions
+    self.discovered = discovered
+  def discover(self):
+    self.discovered = True
   def locked_message(self):
     return " [LOCKED]" if self.is_locked else ""
   def to_string(self):
@@ -209,6 +221,7 @@ class MySpace:
     if self.is_locked:
       message = "This room is LOCKED. Do you have a KEY?"
     else:
+      self.discover()
       message = "This is the " + self.room.name + ". You see the following:"
       for interaction in self.interactions:
         interaction.discover()
