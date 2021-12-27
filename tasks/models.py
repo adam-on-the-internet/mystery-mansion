@@ -156,27 +156,26 @@ class MySpace:
   def unlock_door(self):
     self.is_locked = False
   def get_message(self, answers):
-    # unlock door if possible
     should_unlock = self.is_locked and len(answers) == 1 and answers[0]
     if should_unlock:
       self.unlock_door()
 
-    # check door lock
     message = ""
     if self.is_locked:
       message = "This room is LOCKED. Do you have a KEY?"
     else:
       message = "This is the " + self.room.name + ". You see the following:"
-      # TODO handle "two white arm chairs, etc"
       for interaction in self.interactions:
         interaction.discover()
         furniture_name = interaction.furniture.name
+        furniture_code = interaction.furniture.game_code
         if not "#2" in furniture_name:
           if "#1" in furniture_name:
             furniture_name = furniture_name.replace(" #1", "")
             furniture_name = "Two " + furniture_name + "s"
-          message = message + "\n - " + furniture_name
-    return "Room #" + self.game_code + " : " + message
+            furniture_code = furniture_code + " & ?"
+          message = message + "\n - " + furniture_name + " (" + furniture_code + ")"
+    return "Room " + self.game_code + " : " + message
 
 class MyRoom:
   def __init__(self, name):

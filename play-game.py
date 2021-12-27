@@ -79,9 +79,9 @@ print_map()
 print_rules()
 
 while not mansion.game_over:
+  previous_message = message
   message = ""
-  
-  if message.endswith("?"):
+  if previous_message.endswith("?"):
     answer = input("Answer (y/n):\n").lower()
     requirement_met = answer == "y" or answer == "yes"
     answers.append(requirement_met)

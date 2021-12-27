@@ -1,21 +1,21 @@
 code, name, rooms
 
-111,Dining Chair #1,Dining Room
-112,Dining Chair #2,Dining Room
-113,Dining Table,Dining Room
+111,Dining Room Chair #1,Dining Room
+112,Dining Room Chair #2,Dining Room
+113,Dining Room Table,Dining Room
 114,China Cabinet,Dining Room
 121,Sofa,Living Room
 122,Coffee Table,Living Room
 123,Bed,Bedroom
 124,Dresser,Bedroom
-131,Bookcase (Small),Study|Bedroom
+131,Small Bookcase,Study|Bedroom
 132,Refrigerator,Kitchen
 133,Sink,Kitchen
 134,Oven,Kitchen
 141,Kitchen Table,Kitchen
 142,Pool Table,Game Room
 143,Pinball Machines,Game Room
-144,Bookcase (Large),Library
+144,Large Bookcase,Library
 211,Hot Tub,Gym
 212,Treadmill,Gym
 213,Piano,Music Room
