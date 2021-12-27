@@ -1,4 +1,8 @@
 from tasks.game_generator import generate_game
+import random
+
+def print_help():
+  print("You can enter these options: 'clear', 'map', 'furniture'")
 
 def print_map():
   print()
@@ -24,6 +28,10 @@ def print_furniture():
   print("Coming soon...") # TODO print furniture list on command
   print()
 
+def use_manual_clear():
+  input("Hit ENTER to clear the screen.")
+  print_clear()
+
 def print_clear():
   print("\n\n\n\n\n\n\n\n\n\n")
   print("\n\n\n\n\n\n\n\n\n\n")
@@ -34,11 +42,21 @@ def print_clear():
   print("\n\n\n\n\n\n\n\n\n\n")
   print("\n\n\n\n\n\n\n\n\n\n")
 
-print("Loading...")
-mansion = generate_game()
-print("Loading completed.")
-print()
+def build_virtual_clue_deck(mansion):
+  print()
+  print("Setup 1 of 1:")
+  input_deck_choice = input("Would you like to use a virtual Clue Deck? (y/n)\n").lower()
+  use_virtual_deck = input_deck_choice == "y" or input_deck_choice == "yes"
 
+  clue_deck = []
+  if use_virtual_deck:
+    for asset in mansion.assets:
+      clue_deck.append(asset.clue.name)
+    random.shuffle(clue_deck)
+  return clue_deck
+
+mansion = generate_game()
+clue_deck = build_virtual_clue_deck(mansion)
 message = ""
 code = ""
 answers = []
@@ -52,15 +70,16 @@ while not mansion.game_over:
   message = ""
   
   if message.endswith("?"):
-    answer = input("Answer (y/n):  ").lower()
+    answer = input("Answer (y/n):\n").lower()
     requirement_met = answer == "y" or answer == "yes"
     answers.append(requirement_met)
     message = mansion.answer_question(code, answers)
   else:
-    print("You can enter a Room Code or Furniture Code.")
-    print("You can also enter 'map', 'clear', and 'furniture'.")
-    code = input("Enter code:  ").lower()
-    if code == "map":
+    print("Enter a Room Code, Furniture Code, or 'HELP' for more options.")
+    code = input("Enter code:\n").lower()
+    if code == "help":
+      print_help()
+    elif code == "map":
       print_map()
     elif code == "clear":
       print_clear()
@@ -70,7 +89,15 @@ while not mansion.game_over:
       answers = []
       message = mansion.check_code(code)
   
+  print()
   if message != "":
-    print()
     print(message)
-    print()
+
+  if len(clue_deck) != 0 and "You found a clue!" in message:
+    drawn_clue = clue_deck.pop()
+    print("Add this clue to your inventory : " + drawn_clue)
+    use_manual_clear()
+  if "FOR YOUR EYES ONLY" in message:
+    use_manual_clear()
+
+  print()

@@ -8,30 +8,30 @@ clue,Clue #4,,
 clue,Clue #5,,
 clue,Clue #6,,
 clue,Clue #7,,
-public hint,Public Hint #1,,the money is NOT in the _notroom1_
-public hint,Public Hint #2,,the money is NOT in the _notroom2_
-public hint,Public Hint #3,,the money is NOT in the _notroom3_
-public hint,Public Hint #4,,the money is NOT in the _notfurniture1_
-public hint,Public Hint #5,,the money is NOT in the _notfurniture2_
-public hint,Public Hint #6,,the money is NOT in the _notfurniture3_
-public hint,Public Hint #7,,the money is NOT in the _notfurniture4_
-public hint,Public Hint #8,,the money is NOT in the _notfurniture5_
-public hint,Public Hint #9,,the money is NOT in the _notfurniture6_
-public hint,Public Hint #10,,the money is NOT in the _notfurniture7_
-public hint,Public Hint #11,,the money is NOT in the _notfurniture8_
-public hint,Public Hint #12,,the money is NOT in the _notfurniture9_
-public hint,Public Hint #13,,the money is NOT in the _notfurniture10_
-public hint,Public Hint #14,,the money is NOT in the _notfurniture11_
-public hint,Public Hint #15,,the money is NOT in the _notfurniture12_
-private hint L0,Private Hint #1,,the money is NOT in the _notfurniture13_
-private hint L0,Private Hint #2,,the money is NOT in the _notfurniture14_
-private hint L0,Private Hint #3,,the money is NOT in the _notfurniture15_
-private hint L0,Private Hint #4,,the money is NOT in the _notfurniture16_
-private hint L0,Private Hint #5,,the money is NOT in the _notroom4_
-private hint L0,Private Hint #6,,the money is NOT in the _notroom5_
-private hint L0,Private Hint #7,,the money is NOT in the _notroom6_
-private hint L1,Private Hint #8,_personoritemforhint8_, the money is NOT in the _notroom7_
-private hint L1,Private Hint #9,_personoritemforhint9_, to find the money you need the _moneyperson_
-private hint L1,Private Hint #10,_personoritemforhint10_, to find the money you need the _moneyitem_
-private hint L1,Private Hint #11,_personoritemforhint11_, look for the money in the _moneyroom_
-private hint L2,Private Hint #12,_personanditemforhint12_, look for the money in the _moneyfurniture_
+public hint,Public Hint #1,,The money is NOT in the _notroom1_
+public hint,Public Hint #2,,The money is NOT in the _notroom2_
+public hint,Public Hint #3,,The money is NOT in the _notroom3_
+public hint,Public Hint #4,,The money is NOT in the _notfurniture1_
+public hint,Public Hint #5,,The money is NOT in the _notfurniture2_
+public hint,Public Hint #6,,The money is NOT in the _notfurniture3_
+public hint,Public Hint #7,,The money is NOT in the _notfurniture4_
+public hint,Public Hint #8,,The money is NOT in the _notfurniture5_
+public hint,Public Hint #9,,The money is NOT in the _notfurniture6_.
+public hint,Public Hint #10,,The money is NOT in the _notfurniture7_.
+public hint,Public Hint #11,,The money is NOT in the _notfurniture8_.
+public hint,Public Hint #12,,The money is NOT in the _notfurniture9_.
+public hint,Public Hint #13,,The money is NOT in the _notfurniture10_.
+public hint,Public Hint #14,,The money is NOT in the _notfurniture11_.
+public hint,Public Hint #15,,The money is NOT in the _notfurniture12_.
+private hint L0,Private Hint #1,,The money is NOT in the _notfurniture13_.
+private hint L0,Private Hint #2,,The money is NOT in the _notfurniture14_.
+private hint L0,Private Hint #3,,The money is NOT in the _notfurniture15_.
+private hint L0,Private Hint #4,,The money is NOT in the _notfurniture16_.
+private hint L0,Private Hint #5,,The money is NOT in the _notroom4_.
+private hint L0,Private Hint #6,,The money is NOT in the _notroom5_.
+private hint L0,Private Hint #7,,The money is NOT in the _notroom6_.
+private hint L1,Private Hint #8,_personoritemforhint8_,The money is NOT in the _notroom7_.
+private hint L1,Private Hint #9,_personoritemforhint9_,To find the money you need the _moneyperson_.
+private hint L1,Private Hint #10,_personoritemforhint10_,To find the money you need the _moneyitem_.
+private hint L1,Private Hint #11,_personoritemforhint11_,Look for the money in the _moneyroom_.
+private hint L2,Private Hint #12,_personanditemforhint12_,Look for the money in the _moneyfurniture_.
