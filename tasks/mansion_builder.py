@@ -1,5 +1,6 @@
 from tasks.game_file_writer import add_lines_to_file
 from tasks.info_reader import read_furniture, read_rooms, read_spaces, read_interactions
+from tasks.models import MyMansion
 import random
 import re
 
@@ -203,3 +204,4 @@ def setup_mansion(id, assets):
   print("preparing mansion...")
   spaces = setup_spaces(assets)
   describe_spaces(spaces, id)
+  return MyMansion(id, assets, spaces)
