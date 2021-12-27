@@ -20,6 +20,20 @@ def print_map():
   print("       |start |       ")
   print()
 
+def print_furniture():
+  print("Coming soon...") # TODO print furniture list on command
+  print()
+
+def print_clear():
+  print("\n\n\n\n\n\n\n\n\n\n")
+  print("\n\n\n\n\n\n\n\n\n\n")
+  print("\n\n\n\n\n\n\n\n\n\n")
+  print("\n\n\n\n\n\n\n\n\n\n")
+  print("\n\n\n\n\n\n\n\n\n\n")
+  print("\n\n\n\n\n\n\n\n\n\n")
+  print("\n\n\n\n\n\n\n\n\n\n")
+  print("\n\n\n\n\n\n\n\n\n\n")
+
 print("Loading...")
 mansion = generate_game()
 print("Loading completed.")
@@ -29,12 +43,13 @@ message = ""
 code = ""
 answers = []
 
+print()
+print("Welcome to Mystery Mansion!")
+print()
+print_map()
+
 while not mansion.game_over:
-  if message == "":
-    print()
-    print("Welcome to Mystery Mansion!")
-    print()
-    print_map()
+  message = ""
   
   if message.endswith("?"):
     answer = input("Answer (y/n):  ").lower()
@@ -42,10 +57,20 @@ while not mansion.game_over:
     answers.append(requirement_met)
     message = mansion.answer_question(code, answers)
   else:
-    code = input("Enter code:  ")
-    answers = []
-    message = mansion.check_code(code)
+    print("You can enter a Room Code or Furniture Code.")
+    print("You can also enter 'map', 'clear', and 'furniture'.")
+    code = input("Enter code:  ").lower()
+    if code == "map":
+      print_map()
+    elif code == "clear":
+      print_clear()
+    elif code == "furniture":
+      print_furniture()
+    else:
+      answers = []
+      message = mansion.check_code(code)
   
-  print()
-  print(message)
-  print()
+  if message != "":
+    print()
+    print(message)
+    print()
