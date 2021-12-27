@@ -68,9 +68,9 @@ class MyInteraction:
   def get_message(self):
     message = ""
     if self.has_requirement:
-      message = "REQUIREMENT BLOCKS YOU." # TODO
+      message = "REQUIREMENT BLOCKS YOU." # TODO handle interaction requirements
     else:
-      message = "..." # TODO
+      message = "..." # TODO handle furniture message
     return self.furniture.name + " : " + message
 
 class MySpace:
@@ -86,12 +86,13 @@ class MySpace:
   def to_string(self):
     return self.room.name + self.locked_message() + " (code " + self.game_code + ")"
   def get_message(self):
-    # TODO check room
+    # TODO handle unlocking a locked room
     message = ""
     if self.is_locked:
       message = "This room is LOCKED. Do you have a KEY?"
     else:
       message = "This is the " + self.room.name + ". You see the following:"
+      # TODO handle "two white arm chairs, etc"
       for interaction in self.interactions:
         message = message + "\n - " + interaction.furniture.name
     return "Room #" + self.game_code + " : " + message

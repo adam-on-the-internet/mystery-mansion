@@ -1,8 +1,15 @@
 # TODO
 
-## MVP
+## Command-Line Playable
 
-- command line playing
+- resolve single question
+- resolve double question
+- handle y/n checks
+- handle interaction requirements
+- handle furniture message
+- handle unlocking a locked room
+- end game when money is found
+- handle two white armchairs, etc
 
 ## Other
 
