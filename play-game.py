@@ -15,8 +15,8 @@ while money_is_hidden:
     print("Welcome to Mystery Mansion!")
   
   if message.endswith("?"):
-    # resolve question (y/n)
-    # TODO handle question
+    # TODO resolve single question (y/n)
+    # TODO resolve double question (y/n)
     answer = input("Answer (y/n):  ").lower()
     message = mansion.answer_question(code, answer)
   else:
@@ -24,12 +24,11 @@ while money_is_hidden:
     code = input("Enter code:  ")
     answer = ""
     message = mansion.check_code(code)
+  
   print()
+  print("INPUT Code  : " + code)
+  print("INPUT Answer: " + answer)
   
-  if code != "":
-    print("INPUT Code: " + code)
-
-  if answer != "":
-    print("INPUT Answer: " + code)
-  
-  print("Message: " + message)
+  print()
+  print(message)
+  print()

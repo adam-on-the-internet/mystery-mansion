@@ -4,7 +4,7 @@ class MyMansion:
     self.assets = assets
     self.spaces = spaces
     self.code_history = code_history
-  def answer_question(self, answer):
+  def answer_question(self, code, answer):
     # TODO handle y/n checks 
     return "..."
   def check_code(self, code):
@@ -66,10 +66,12 @@ class MyInteraction:
   def to_string(self):
     return self.furniture.name + " (code " + self.furniture.game_code + ") : " + self.name + self.requirement_message() + self.hint_message()
   def get_message(self):
-    # TODO check furniture
-    furniture_name = self.furniture.name
-    message = "FURNITURE MESSAGE"
-    return furniture_name + " : " + message
+    message = ""
+    if self.has_requirement:
+      message = "REQUIREMENT BLOCKS YOU." # TODO
+    else:
+      message = "..." # TODO
+    return self.furniture.name + " : " + message
 
 class MySpace:
   def __init__(self, game_code, name, can_be_locked, is_locked, room, interactions):
@@ -85,9 +87,14 @@ class MySpace:
     return self.room.name + self.locked_message() + " (code " + self.game_code + ")"
   def get_message(self):
     # TODO check room
-    room_name = self.room.name
-    message = "ROOM MESSAGE"
-    return room_name + " : " + message
+    message = ""
+    if self.is_locked:
+      message = "This room is LOCKED. Do you have a KEY?"
+    else:
+      message = "This is the " + self.room.name + ". You see the following:"
+      for interaction in self.interactions:
+        message = message + "\n - " + interaction.furniture.name
+    return "Room #" + self.game_code + " : " + message
 
 class MyRoom:
   def __init__(self, name):
