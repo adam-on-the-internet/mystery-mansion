@@ -4,6 +4,7 @@
 
 - at the start, draw the map with room #s for the players
 - at the start, provide a furniture key list
+- repeat, clear, other input controls
 - allow drawing clues... for people who don't have the physical game. or just provide manual setup
 - after private messages (or just all?), hint enter again to clear screen
 
