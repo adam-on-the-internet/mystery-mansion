@@ -4,10 +4,16 @@ class MyMansion:
     self.assets = assets
     self.spaces = spaces
   def check_code(self, code):
-    # TODO check room
-    # TODO check furniture
+    message = "That code is invalid."
+    for space in self.spaces:
+      if space.game_code == code:
+        message = space.get_message()
+      else:
+        for interaction in space.interactions:
+          if interaction.furniture.game_code == code:
+            message = interaction.get_message()
     # TODO handle y/n checks 
-    return "That code is invalid."
+    return message
 
 class MyAsset:
   def __init__(self, name, asset_type, clue):
@@ -52,6 +58,9 @@ class MyInteraction:
       return ""
   def to_string(self):
     return self.furniture.name + " (code " + self.furniture.game_code + ") : " + self.name + self.requirement_message() + self.hint_message()
+  def get_message(self):
+    # TODO check furniture
+    return self.furniture.name + ". Furniture message..."
 
 class MySpace:
   def __init__(self, game_code, name, can_be_locked, is_locked, room, interactions):
@@ -65,6 +74,9 @@ class MySpace:
     return " [LOCKED]" if self.is_locked else ""
   def to_string(self):
     return self.room.name + self.locked_message() + " (code " + self.game_code + ")"
+  def get_message(self):
+    # TODO check room
+    return self.room.name + ". Room message..."
 
 class MyRoom:
   def __init__(self, name):

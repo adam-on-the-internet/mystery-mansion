@@ -2,7 +2,7 @@
 
 ## MVP
 
-- generate + start command line game
+- command line playing
 
 ## Other
 
