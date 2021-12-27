@@ -91,7 +91,7 @@ def populate_requirement(interaction, assets):
     random.shuffle(requirement_order)
     first_requirement = requirement_order[0]
     second_requirement = requirement_order[1]
-    interaction.requirement = "_x_ and _y_".replace("_x_", first_requirement).replace("_y_", second_requirement)
+    interaction.requirement = "_x_ & _y_".replace("_x_", first_requirement).replace("_y_", second_requirement)
     interaction.requirement = interaction.requirement.replace("#", requirement_detail, 2)
 
   # interpolate the clue/asset names
@@ -203,4 +203,4 @@ def describe_spaces(spaces, id):
 def setup_mansion(id, assets):
   spaces = setup_spaces(assets)
   describe_spaces(spaces, id)
-  return MyMansion(id, assets, spaces, [])
+  return MyMansion(id, assets, spaces, [], False)

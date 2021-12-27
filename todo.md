@@ -2,13 +2,9 @@
 
 ## Command-Line Playable
 
-- resolve single question interaction
-- resolve double question interaction
-- handle y/n checks
-- handle interaction requirements
-- handle furniture message
-- end game when money is found
 - handle two white armchairs, etc
+- clue limits
+- disallow looking at furniture that is undiscovered
 
 ## Other
 

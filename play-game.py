@@ -4,13 +4,11 @@ print("Loading...")
 mansion = generate_game()
 print("Loading completed.")
 print()
-
-money_is_hidden = True #TODO end game when money is found
 message = ""
 code = ""
 answers = []
 
-while money_is_hidden:
+while not mansion.game_over:
   if message == "":
     print("Welcome to Mystery Mansion!")
   
@@ -29,6 +27,7 @@ while money_is_hidden:
   print()
   print("INPUT Code   : " + code)
   print("INPUT Answers: " + str(answers))
+  print("GAME OVER: " + str(mansion.game_over))
   
   print()
   print(message)
