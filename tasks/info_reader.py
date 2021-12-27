@@ -24,6 +24,8 @@ class MyInteraction:
     self.requirement = requirement
     self.hint = hint
     self.furniture = furniture
+  def has_clue(self):
+    return self.interaction_type == "clue"
   def has_money(self):
     return self.interaction_type == "money"
   def has_hint(self):
@@ -41,7 +43,7 @@ class MyInteraction:
     else:
       return ""
   def to_string(self):
-    return self.furniture.name + " : " + self.name + self.requirement_message() + self.hint_message()
+    return self.furniture.name + " (code " + self.furniture.game_code + ") : " + self.name + self.requirement_message() + self.hint_message()
 
 class MySpace:
   def __init__(self, game_code, name, can_be_locked, is_locked, room, interactions):
@@ -54,7 +56,7 @@ class MySpace:
   def locked_message(self):
     return " [LOCKED]" if self.is_locked else ""
   def to_string(self):
-    return self.room.name + self.locked_message() + " (" + self.game_code + ")"
+    return self.room.name + self.locked_message() + " (code " + self.game_code + ")"
 
 class MyRoom:
   def __init__(self, name):

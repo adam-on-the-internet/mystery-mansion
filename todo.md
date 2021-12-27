@@ -2,8 +2,6 @@
 
 ## MVP
 
-- populate hints
-- 1 clue per room rule
 - generate + start command line game
 
 ## Other

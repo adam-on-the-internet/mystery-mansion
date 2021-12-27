@@ -3,14 +3,51 @@ from tasks.info_reader import read_furniture, read_rooms, read_spaces, read_inte
 import random
 import re
 
+def get_clue_interactions(interactions):
+  matching_interactions = []
+  for interaction in interactions:
+    if interaction.has_clue():
+      matching_interactions.append(interaction)
+  return matching_interactions
+
+def get_non_clue_interactions(interactions):
+  matching_interactions = []
+  for interaction in interactions:
+    if not interaction.has_clue():
+      matching_interactions.append(interaction)
+  return matching_interactions
+
 def setup_interactions():
-  # TODO one clue in each room MAX
   interactions = read_interactions()
   random.shuffle(interactions)
+
+  clue_interactions = get_clue_interactions(interactions)
+  non_clue_interactions = get_non_clue_interactions(interactions)
+  
   furniture = read_furniture()
-  for index, interaction in enumerate(interactions):
+  random.shuffle(furniture)
+
+  # We set a max of 1 clue interaction per room.
+  # If more than 2 clues are in locked rooms, the game can become unwinnable.
+  # Placing 1 clue per room removes that possibility, as only 2 rooms are locked.
+  clue_rooms = []
+  for interaction in clue_interactions:
+    furniture_index = 0
+    selected = False
+    while not selected:
+      selected_furniture = furniture[furniture_index]
+      if selected_furniture.selected_room not in clue_rooms:
+        clue_rooms.append(selected_furniture.selected_room)
+        interaction.furniture = furniture.pop(furniture_index)
+        selected = True
+      else:
+        furniture_index = furniture_index + 1
+
+  # set non-clue interactions
+  for index, interaction in enumerate(non_clue_interactions):
     interaction.furniture = furniture[index]
-  return interactions  
+
+  return clue_interactions + non_clue_interactions  
 
 def get_rooms():
   rooms = read_rooms()
@@ -38,6 +75,7 @@ def populate_spaces(interactions):
       interaction_room = interaction.furniture.selected_room.strip().upper()
       if space_room == interaction_room:
         space.interactions.append(interaction)
+        random.shuffle(space.interactions)
   return spaces
 
 def populate_requirement(interaction, assets):
