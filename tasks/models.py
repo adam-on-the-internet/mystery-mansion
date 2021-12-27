@@ -170,7 +170,12 @@ class MySpace:
       # TODO handle "two white arm chairs, etc"
       for interaction in self.interactions:
         interaction.discover()
-        message = message + "\n - " + interaction.furniture.name
+        furniture_name = interaction.furniture.name
+        if not "#2" in furniture_name:
+          if "#1" in furniture_name:
+            furniture_name = furniture_name.replace(" #1", "")
+            furniture_name = "Two " + furniture_name + "s"
+          message = message + "\n - " + furniture_name
     return "Room #" + self.game_code + " : " + message
 
 class MyRoom:
