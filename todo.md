@@ -2,14 +2,13 @@
 
 ## Command-Line Playable
 
-- remove shuffled deck from setup
+- include room code & furniture code in helpful spots
+- furniture list
+
 - when you enter a room, list rooms you can enter from that room?
 - printed map within Mansion class, show some info
 - start up questions, like playable deck
-- after private message or clue draw, clear
-- link basic rules pdf
 - use four-letter code instead of full uuid
-- include room code & furniture code in helpful spots
 - at the start, provide a furniture key list
 - allow drawing clues... for people who don't have the physical game. or just provide manual setup
 
