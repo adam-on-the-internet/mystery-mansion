@@ -1,5 +1,10 @@
 # TODO
 
+- "Is the _ with you?"
+- divide up messages better, always clear?
+- read aloud note
+- text to speech?
+
 ## Next Steps
 
 - Add Logging
