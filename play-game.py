@@ -5,22 +5,21 @@ def print_help():
   print()
   print("You can enter these options:")
   print(" - clear      : CLEAR the terminal.")
+  print(" - roll       : ROLL a six-sided die.")
   print(" - map        : Display a MAP of the mansion.")
   print(" - furniture  : Display the FURNITURE available in this game.")
   print(" - rooms      : Display the ROOMS available in this game.")
   print(" - clues      : Display the CLUES available in this game.")
   print(" - rules      : Display a link to the RULES Online.")
   print(" - exit       : EXIT the game.")
-  print()
+
+def print_roll():
+  result = random.randrange(6) + 1
+  print("You rolled a " + str(result) + ".")
 
 def print_rules():
   print()
   print("Rules available here: https://www.hasbro.com/common/instruct/Mystery_Mansion_(1996).PDF")
-  print()
-
-def print_furniture():
-  print("Coming soon...") # TODO print furniture list on command
-  print()
 
 def use_manual_clear():
   input("Hit ENTER to clear the screen.")
@@ -74,6 +73,8 @@ while not mansion.game_over:
     code = input("Enter code:\n").lower()
     if code == "help":
       print_help()
+    elif code == "roll":
+      print_roll()
     elif code == "rules":
       print_rules()
     elif code == "clear":
