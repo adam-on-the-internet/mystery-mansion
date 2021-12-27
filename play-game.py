@@ -76,6 +76,7 @@ while not mansion.game_over:
     print()
     print("~~~~ Turn #" + str(turn_count) + " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
     print()
+    turn_count = turn_count + 1
     print("Enter a Room Code, Furniture Code, or 'help' for more options.")
     code = input("Enter code:\n").lower()
     if code == "help":
@@ -98,7 +99,6 @@ while not mansion.game_over:
       mansion.print_available_clues()
     else:
       answers = []
-      turn_count = turn_count + 1
       message = mansion.check_code(code)
   
   print()
