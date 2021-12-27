@@ -21,7 +21,6 @@ def print_help():
   print(" - rooms      : Display the ROOMS available in this game.")
   print(" - clues      : Display the CLUES available in this game.")
   print(" - rules      : Display a link to the RULES Online.")
-  print(" - exit       : EXIT the game.")
 
 def print_roll():
   result = random.randrange(6) + 1

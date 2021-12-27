@@ -165,9 +165,7 @@ class MyInteraction:
     recent_check_passed = completed_checks > 0 and answers[-1]
 
     show_full_message = (not self.has_requirement()) or (self.has_single_requirement() and completed_checks == 1 and recent_check_passed) or (self.has_double_requirement() and completed_checks == 2 and recent_check_passed)
-
     ask_requirement_1 = (self.has_single_requirement() and completed_checks == 0) or (self.has_double_requirement() and completed_checks == 0)
-    
     ask_requirement_2 = (self.has_double_requirement() and completed_checks == 1 and recent_check_passed)
 
     message = ""
@@ -195,7 +193,7 @@ class MyInteraction:
     else:
       message = "Invalid input."
 
-    return self.furniture.name + " : " + message
+    return self.furniture.name + " (" + self.furniture.game_code + ") : " + message
 
 class MySpace:
   def __init__(self, game_code, name, can_be_locked, is_locked, room, interactions, discovered):
