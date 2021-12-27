@@ -1,9 +1,5 @@
 # TODO
 
-## Command-Line Playable
-
-- use four-letter code instead of full uuid
-
 ## Logging
 
 - add overall game log
@@ -13,7 +9,6 @@
 
 - more setup steps?
 - when you enter a room, list rooms you can enter from that room?
-- randomize game name
 
 - Next Steps...
   - Game Upload

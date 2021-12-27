@@ -38,27 +38,29 @@ class MyMansion:
     for space in self.spaces:
       if str(space.game_code) == str(space_code):
         if space.discovered:
-          return " "
+          return " " + str(space_code) + " "
         else:
-          return "?"
-    return "!"
+          return str(space_code) + " ?"
+    return "!!!!"
+  def print_code(self):
+    print("Mansion Code: " + self.id)
   def print_map(self):
     print()
     print("Here's the Map of Mystery Mansion:")
     print("          ______          ")
-    print("0--------/      \--------0")
+    print("0--------/      \--------o")
     print("|       |        |       |")
-    print("| 22 " + self.check_space_discovery(22) + "  x  21 " + self.check_space_discovery(21) + "  x 14 " + self.check_space_discovery(14) + "  |")
+    print("| " + self.check_space_discovery(22) + "  x  " + self.check_space_discovery(21) + "  x " + self.check_space_discovery(14) + "  |")
     print("|       |        |       |")
-    print("0---xx------xx------xx---0")
+    print("o---xx------xx------xx---o")
     print("|       |        |       |")
-    print("| 23 " + self.check_space_discovery(23) + "  x  31 " + self.check_space_discovery(31) + "  x 13 " + self.check_space_discovery(13) + "  |")
+    print("| " + self.check_space_discovery(23) + "  x  " + self.check_space_discovery(31) + "  x " + self.check_space_discovery(13) + "  |")
     print("|       |        |       |")
-    print("0---xx------xx------xx---0")
+    print("o---xx------xx------xx---o")
     print("|       |        |       |")
-    print("| 24 " + self.check_space_discovery(24) + "  x  11 " + self.check_space_discovery(11) + "  x 12 " + self.check_space_discovery(12) + "  |")
+    print("| " + self.check_space_discovery(24) + "  x  " + self.check_space_discovery(11) + "  x " + self.check_space_discovery(12) + "  |")
     print("|       |        |       |")
-    print("0-----------xx-----------0")
+    print("o-----------xx-----------o")
     print("        | start  |       ")
   def take_clue(self):
     self.clues_taken = self.clues_taken + 1

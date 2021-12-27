@@ -5,6 +5,7 @@ def print_help():
   print()
   print("You can enter these options:")
   print(" - clear      : CLEAR the terminal.")
+  print(" - code       : Show game CODE.")
   print(" - roll       : ROLL a six-sided die.")
   print(" - map        : Display a MAP of the mansion.")
   print(" - furniture  : Display the FURNITURE available in this game.")
@@ -56,6 +57,7 @@ answers = []
 
 print()
 print("Welcome to Mystery Mansion!")
+mansion.print_code()
 print()
 mansion.print_map()
 print_rules()
@@ -79,6 +81,8 @@ while not mansion.game_over:
       print_rules()
     elif code == "clear":
       print_clear()
+    elif code == "code":
+      mansion.print_code()
     elif code == "map":
       mansion.print_map()
     elif code == "furniture":
@@ -101,5 +105,3 @@ while not mansion.game_over:
     use_manual_clear()
   if "FOR YOUR EYES ONLY" in message:
     use_manual_clear()
-
-  print()

@@ -1,18 +1,20 @@
 from tasks.game_file_writer import add_lines_to_file, setup_directories, setup_game_file
 from util.file_utils import make_directory_if_not_exists
-import uuid
 import datetime
+import random
+import string
 
 def get_id():
-  return str(uuid.uuid4())
+  id = ""
+  while len(id) != 4:
+    next_letter = random.choice(string.ascii_letters).upper()
+    id = id + next_letter
+  return id
 
-def get_name():
-  return "Find the Money" # TODO randomize game name
-
-def describe_game(id, name):
+def describe_game(id):
   now = datetime.datetime.now()
   lines = [
-    "# Mystery Mansion: " + name,
+    "# Mystery Mansion",
     "- id: " + id,
     "- generated: " + str(now),
   ]
@@ -20,8 +22,7 @@ def describe_game(id, name):
 
 def initialize_game():
   id = get_id()
-  name = get_name()
   setup_directories(id)
   setup_game_file(id)
-  describe_game(id, name)
+  describe_game(id)
   return id
