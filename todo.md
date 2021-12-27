@@ -2,12 +2,12 @@
 
 ## Command-Line Playable
 
+- handle unlocking a locked room
 - resolve single question
 - resolve double question
 - handle y/n checks
 - handle interaction requirements
 - handle furniture message
-- handle unlocking a locked room
 - end game when money is found
 - handle two white armchairs, etc
 
