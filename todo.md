@@ -1,8 +1,6 @@
 # TODO
 
 - "Is the _ with you?"
-- read aloud note
-- text to speech?
 
 ## Next Steps
 

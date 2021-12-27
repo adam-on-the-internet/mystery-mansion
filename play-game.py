@@ -1,5 +1,14 @@
 from tasks.game_generator import generate_game
 import random
+import pyttsx3
+
+def say_and_print_message(engine, message, secret_message):
+  print(message)
+  if secret_message != "":
+    print("(FOR YOUR EYES ONLY) " + secret_message)
+  if engine is not None:
+    engine.say(message)
+    engine.runAndWait()
 
 def print_help():
   print()
@@ -38,7 +47,7 @@ def print_clear():
 
 def build_virtual_clue_deck(mansion):
   print()
-  print("Setup 1 of 1:")
+  print("Setup 1 of 2:")
   input_deck_choice = input("Would you like to use a virtual Clue Deck? (y/n)\n").lower()
   use_virtual_deck = input_deck_choice == "y" or input_deck_choice == "yes"
 
@@ -49,15 +58,31 @@ def build_virtual_clue_deck(mansion):
     random.shuffle(clue_deck)
   return clue_deck
 
+def choose_voice():
+  print()
+  print("Setup 2 of 2:")
+  voice_choice = input("Would you like to use text-to-speech? (y/n)\n").lower()
+  print()
+  use_voice = voice_choice == "y" or voice_choice == "yes"
+  if use_voice:
+    return pyttsx3.init()
+  else:
+    return None
+
 mansion = generate_game()
 clue_deck = build_virtual_clue_deck(mansion)
+engine = choose_voice()
+
 message = ""
 code = ""
 answers = []
 turn_count = 1
 
+welcome_message = "Welcome to Mystery Mansion!"
+say_and_print_message(engine, welcome_message, "")
+
 print()
-print("Welcome to Mystery Mansion!")
+print(welcome_message)
 mansion.print_code()
 print()
 mansion.print_map()
@@ -103,11 +128,20 @@ while not mansion.game_over:
   
   print()
   if message != "":
-    print("(READ ALOUD) " + message)
+    private_message_disclaimer = "\nBEEP BEEP. Look at the screen for a private message for your eyes only.\n When you are finished, hit ENTER to clear the screen."
+    if len(clue_deck) != 0 and "You found a clue!" in message:
+      drawn_clue = clue_deck.pop()
+      message = message + private_message_disclaimer
+      secret_message = "Add this clue to your inventory : " + drawn_clue
+      say_and_print_message(engine, message, secret_message)
+      use_manual_clear()
+    elif "(FOR YOUR EYES ONLY)" in message:
+      split_message = message.split("(FOR YOUR EYES ONLY)")
+      message = split_message[0].strip()
+      message = message + private_message_disclaimer
+      secret_message = split_message[1].strip()
+      say_and_print_message(engine, message, secret_message)
+      use_manual_clear()
+    else:
+      say_and_print_message(engine, message, '')
 
-  if len(clue_deck) != 0 and "You found a clue!" in message:
-    drawn_clue = clue_deck.pop()
-    print("Add this clue to your inventory : " + drawn_clue)
-    use_manual_clear()
-  if "FOR YOUR EYES ONLY" in message:
-    use_manual_clear()
