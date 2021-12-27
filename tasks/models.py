@@ -1,10 +1,14 @@
 class MyMansion:
-  def __init__(self, id, assets, spaces):
+  def __init__(self, id, assets, spaces, code_history):
     self.id = id
     self.assets = assets
     self.spaces = spaces
+    self.code_history = code_history
+  def answer_question(self, answer):
+    # TODO handle y/n checks 
+    return "..."
   def check_code(self, code):
-    message = "That code is invalid."
+    message = ""
     for space in self.spaces:
       if space.game_code == code:
         message = space.get_message()
@@ -12,7 +16,10 @@ class MyMansion:
         for interaction in space.interactions:
           if interaction.furniture.game_code == code:
             message = interaction.get_message()
-    # TODO handle y/n checks 
+    if message == "":
+      message = "That code is invalid."
+    else:
+      self.code_history.append(code)
     return message
 
 class MyAsset:
@@ -60,7 +67,9 @@ class MyInteraction:
     return self.furniture.name + " (code " + self.furniture.game_code + ") : " + self.name + self.requirement_message() + self.hint_message()
   def get_message(self):
     # TODO check furniture
-    return self.furniture.name + ". Furniture message..."
+    furniture_name = self.furniture.name
+    message = "FURNITURE MESSAGE"
+    return furniture_name + " : " + message
 
 class MySpace:
   def __init__(self, game_code, name, can_be_locked, is_locked, room, interactions):
@@ -76,7 +85,9 @@ class MySpace:
     return self.room.name + self.locked_message() + " (code " + self.game_code + ")"
   def get_message(self):
     # TODO check room
-    return self.room.name + ". Room message..."
+    room_name = self.room.name
+    message = "ROOM MESSAGE"
+    return room_name + " : " + message
 
 class MyRoom:
   def __init__(self, name):

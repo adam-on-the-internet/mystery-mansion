@@ -203,4 +203,4 @@ def describe_spaces(spaces, id):
 def setup_mansion(id, assets):
   spaces = setup_spaces(assets)
   describe_spaces(spaces, id)
-  return MyMansion(id, assets, spaces)
+  return MyMansion(id, assets, spaces, [])
