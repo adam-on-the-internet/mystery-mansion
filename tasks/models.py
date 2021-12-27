@@ -46,7 +46,7 @@ class MyMansion:
     print("Mansion Code: " + self.id)
   def print_map(self):
     print()
-    print("Here's the Map of Mystery Mansion:")
+    print("Map of the Mansion:")
     print("          ______          ")
     print("0--------/      \--------o")
     print("|       |        |       |")
