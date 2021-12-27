@@ -201,7 +201,6 @@ def describe_spaces(spaces, id):
   add_lines_to_file(lines, id)  
 
 def setup_mansion(id, assets):
-  print("preparing mansion...")
   spaces = setup_spaces(assets)
   describe_spaces(spaces, id)
   return MyMansion(id, assets, spaces)

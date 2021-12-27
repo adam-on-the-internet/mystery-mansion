@@ -3,6 +3,8 @@ class MyMansion:
     self.id = id
     self.assets = assets
     self.spaces = spaces
+  def check_code(self, code):
+    return "Entered code: " + code
 
 class MyAsset:
   def __init__(self, name, asset_type, clue):

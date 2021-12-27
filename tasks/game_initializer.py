@@ -16,7 +16,6 @@ def describe_game(id, name):
   add_lines_to_file(lines, id)  
 
 def initialize_game():
-  print("initializing game...")
   id = get_id()
   name = get_name()
   setup_directories(id)
