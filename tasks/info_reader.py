@@ -24,7 +24,7 @@ def read_interactions():
         name = row[1].strip()
         requirement = row[2].strip()
         hint = row[3].strip()
-        myInteraction = MyInteraction(interaction_type, name, requirement, hint, '')
+        myInteraction = MyInteraction(interaction_type, name, requirement, hint, '', False, 0)
         interactions.append(myInteraction)
     return interactions  
 

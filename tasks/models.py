@@ -1,10 +1,13 @@
 class MyMansion:
-  def __init__(self, id, assets, spaces, code_history, game_over):
+  def __init__(self, id, assets, spaces, code_history, game_over, clues_taken):
     self.id = id
     self.assets = assets
     self.spaces = spaces
     self.code_history = code_history
     self.game_over = game_over
+    self.clues_taken = clues_taken
+  def take_clue(self):
+    self.clues_taken = self.clues_taken + 1
   def answer_question(self, code, answers):
     if len(answers) == 0:
       return "Invalid input."
@@ -33,7 +36,11 @@ class MyMansion:
     else:
       self.code_history.append(code)
 
-    if "You win!" in message:
+    if "You found a clue!" in message:
+      if self.clues_taken >= len(self.assets):
+        message = message.replace("You found a clue!", "Take a clue from another player.")
+      self.take_clue()
+    elif "You win!" in message:
       self.end_game()
 
     return message   
@@ -55,12 +62,18 @@ class MyAsset:
     return self.clue.name + " : " + self.name
 
 class MyInteraction:
-  def __init__(self, interaction_type, name, requirement, hint, furniture):
+  def __init__(self, interaction_type, name, requirement, hint, furniture, discovered, clues_taken):
     self.interaction_type = interaction_type
     self.name = name
     self.requirement = requirement
     self.hint = hint
     self.furniture = furniture
+    self.discovered = discovered
+    self.clues_taken = clues_taken
+  def discover(self):
+    self.discovered = True
+  def take_clue(self):
+    self.clues_taken = self.clues_taken + 1
   def has_clue(self):
     return self.interaction_type == "clue"
   def has_money(self):
@@ -90,6 +103,8 @@ class MyInteraction:
   def to_string(self):
     return self.furniture.name + " (code " + self.furniture.game_code + ") : " + self.name + self.requirement_message() + self.hint_message()
   def get_message(self, answers):
+    if not self.discovered:
+      return "Sorry, this item is not yet discovered."
     completed_checks = len(answers)
     recent_check_passed = completed_checks > 0 and answers[-1]
 
@@ -104,7 +119,11 @@ class MyInteraction:
       if self.has_money():
         message = "You found the money. You win!"
       elif self.has_clue():
-        message = "You found a clue!" # TODO count how many clues have been taken (from each spot & total)
+        if self.clues_taken > 1:
+          message = "Sorry, there are no clues left here."
+        else:
+          message = "You found a clue!"
+        self.take_clue()
       elif self.has_public_hint():
         message = self.hint
       elif self.has_private_hint():
@@ -150,6 +169,7 @@ class MySpace:
       message = "This is the " + self.room.name + ". You see the following:"
       # TODO handle "two white arm chairs, etc"
       for interaction in self.interactions:
+        interaction.discover()
         message = message + "\n - " + interaction.furniture.name
     return "Room #" + self.game_code + " : " + message
 

@@ -3,8 +3,8 @@
 ## Command-Line Playable
 
 - handle two white armchairs, etc
-- clue limits
-- disallow looking at furniture that is undiscovered
+- at the start, draw the map for the players
+- add game log file
 
 ## Other
 
