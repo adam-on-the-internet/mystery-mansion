@@ -7,6 +7,7 @@
 - Browser Player
 - Twitter Bot
 - Alternate Furniture, etc
+- Allow selecting a game by the code
 
 ## Logging
 
