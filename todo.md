@@ -1,7 +1,5 @@
 # TODO
 
-- "Is the _ with you?"
-
 ## Next Steps
 
 - Add Logging

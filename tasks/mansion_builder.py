@@ -80,40 +80,27 @@ def populate_spaces(interactions):
   return spaces
 
 def populate_requirement(interaction, assets):
-  # for requirements with person AND item, randomize the order
-  if "personanditem" in interaction.requirement:
-    requirement_detail = "0"
-    if "_personanditemformoney_" in interaction.requirement:
-      requirement_detail = "formoney"
-    elif "_personanditemforhint12_" in interaction.requirement:
-      requirement_detail = "forhint12"
-    requirement_order = ["_person#_", "_item#_"]
-    random.shuffle(requirement_order)
-    first_requirement = requirement_order[0]
-    second_requirement = requirement_order[1]
-    interaction.requirement = "_x_ & _y_".replace("_x_", first_requirement).replace("_y_", second_requirement)
-    interaction.requirement = interaction.requirement.replace("#", requirement_detail, 2)
-
-  # interpolate the clue/asset names
   for asset in assets:
     asset_name = asset.name
     clue_name = asset.clue.name
-    if asset_name == "Person for Money":
-      interaction.requirement = interaction.requirement.replace("_personformoney_", clue_name)
-    elif asset.name == "Item for Money":
-      interaction.requirement = interaction.requirement.replace("_itemformoney_", clue_name)
-    elif asset.name == "Person for Hint #12":
-      interaction.requirement = interaction.requirement.replace("_personforhint12_", clue_name)
-    elif asset.name == "Item for Hint #12":
-      interaction.requirement = interaction.requirement.replace("_itemforhint12_", clue_name)
-    elif asset.name == "Clue for Hint #11":
-      interaction.requirement = interaction.requirement.replace("_personoritemforhint11_", clue_name)
-    elif asset.name == "Clue for Hint #10":
-      interaction.requirement = interaction.requirement.replace("_personoritemforhint10_", clue_name)
-    elif asset.name == "Clue for Hint #9":
-      interaction.requirement = interaction.requirement.replace("_personoritemforhint9_", clue_name)
-    elif asset.name == "Clue for Hint #8":
-      interaction.requirement = interaction.requirement.replace("_personoritemforhint8_", clue_name)
+    if asset_name == "Person for Money" and "_personanditemformoney_" in interaction.requirement:
+      interaction.required_assets.append(asset)
+    elif asset.name == "Item for Money" and "_personanditemformoney_" in interaction.requirement:
+      interaction.required_assets.append(asset)
+    elif asset.name == "Person for Hint #12" and "_personanditemforhint12_" in interaction.requirement:
+      interaction.required_assets.append(asset)
+    elif asset.name == "Item for Hint #12" and "_personanditemforhint12_" in interaction.requirement:
+      interaction.required_assets.append(asset)
+    elif asset.name == "Clue for Hint #11" and "_personoritemforhint11_" in interaction.requirement:
+      interaction.required_assets.append(asset)
+    elif asset.name == "Clue for Hint #10" and "_personoritemforhint10_" in interaction.requirement:
+      interaction.required_assets.append(asset)
+    elif asset.name == "Clue for Hint #9" and "_personoritemforhint9_" in interaction.requirement:
+      interaction.required_assets.append(asset)
+    elif asset.name == "Clue for Hint #8" and "_personoritemforhint8_" in interaction.requirement:
+      interaction.required_assets.append(asset)
+
+    random.shuffle(interaction.required_assets)
 
 def populate_asset_hint(interaction, assets):
   for asset in assets:

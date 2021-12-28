@@ -7,8 +7,11 @@ def say_and_print_message(engine, message, secret_message):
   if secret_message != "":
     print()
     print("** FOR YOUR EYES ONLY **")
+    print()
     print(secret_message)
+    print()
     print("** FOR YOUR EYES ONLY **")
+    print()
   if engine is not None:
     engine.say(message)
     engine.runAndWait()
@@ -148,3 +151,4 @@ while not mansion.game_over:
     if secret_message != "":
       use_manual_clear()
 
+say_and_print_message(engine, "-- GAME OVER --", "")

@@ -106,6 +106,13 @@ class MyAsset:
     self.name = name
     self.asset_type = asset_type
     self.clue = clue
+  def get_requirement_message(self):
+    if self.clue.get_is_person():
+      return "Is the " + self.clue.name + " with you?"
+    elif self.clue.get_is_item():
+      return "Do you have the " + self.clue.name + "?"
+    else:
+      return "Invalid clue."
   def get_is_person(self):
     return self.asset_type == "person"
   def get_is_item(self):
@@ -118,7 +125,7 @@ class MyAsset:
     return self.clue.name + ": " + self.name
 
 class MyInteraction:
-  def __init__(self, interaction_type, name, requirement, hint, furniture, discovered, clues_taken):
+  def __init__(self, interaction_type, name, requirement, hint, furniture, discovered, clues_taken, required_assets):
     self.interaction_type = interaction_type
     self.name = name
     self.requirement = requirement
@@ -126,6 +133,7 @@ class MyInteraction:
     self.furniture = furniture
     self.discovered = discovered
     self.clues_taken = clues_taken
+    self.required_assets = required_assets
   def discover(self):
     self.discovered = True
   def take_clue(self):
@@ -143,9 +151,9 @@ class MyInteraction:
   def has_requirement(self):
     return self.requirement.strip() != ""
   def has_single_requirement(self):
-    return self.requirement.strip() != "" and not "&" in self.requirement
+    return len(self.required_assets) == 1
   def has_double_requirement(self):
-    return self.requirement.strip() != "" and "&" in self.requirement
+    return len(self.required_assets) == 2
   def hint_message(self):
     if self.has_hint():
       return " [HINT: " + self.hint + "]"
@@ -153,7 +161,12 @@ class MyInteraction:
       return ""
   def requirement_message(self):
     if self.has_requirement():
-      return " [REQUIREMENT: " + self.requirement + "]"
+      _requirement_message = ""
+      for asset in self.required_assets:
+        if _requirement_message != "":
+          _requirement_message = _requirement_message + " & "
+        _requirement_message = _requirement_message + asset.clue.name
+      return " [REQUIREMENT: " + _requirement_message.strip() + "]"
     else:
       return ""
   def to_string(self):
@@ -185,11 +198,11 @@ class MyInteraction:
       else:
         message = "Invalid input."
     elif ask_requirement_1:
-      requirement = self.requirement.split("&")[0]
-      message = "Do you have the " + requirement + "?" # TODO vary by person or item
+      asset = self.required_assets[0]
+      message = asset.get_requirement_message()
     elif ask_requirement_2:
-      requirement = self.requirement.split("&")[1]
-      message = "Do you have the " + requirement + "?" # TODO vary by person or item
+      asset = self.required_assets[1]
+      message = asset.get_requirement_message()
     else:
       message = "Invalid input."
 
