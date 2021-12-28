@@ -1,24 +1,17 @@
 # TODO
 
-## Next Steps
-
 - Add Logging
+  - add log of actions in a particular game
+  - add log of actions overall
 - Upload Mansions
+  - upload Mansion (.md or otherwise)
+  - have a separate app that reads the Mansions to display or even to play the game
 - Browser Player
+  - find a way to play the game via browser, app, or otherwise
+- Physical Companion Guide
+  - produce a guide to how to play the game with some home-made pieces
 - Twitter Bot
+  - develop a twitter bot that tweets about Mansions
 - Alternate Furniture, etc
+  - create alternate Mansion setup (rooms, furniture, etc)
 - Allow selecting a game by the code
-
-## Logging
-
-- add overall game log
-- add game log file
-
-## Other
-
-- more setup steps?
-- when you enter a room, list rooms you can enter from that room?
-
-- original version: just use default rooms, furniture, etc
-- original version +: are there things we can add that will work with physical?
-- updated version: won't work with physical board, add more items
