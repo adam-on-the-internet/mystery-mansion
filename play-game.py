@@ -27,6 +27,7 @@ def print_help():
   print(" - rooms      : Display the ROOMS available in this game.")
   print(" - clues      : Display the CLUES available in this game.")
   print(" - rules      : Display a link to the RULES Online.")
+  print(" - end        : END the game immediately.")
 
 def print_roll():
   result = random.randrange(6) + 1
@@ -116,6 +117,8 @@ while not mansion.game_over:
       print_rules()
     elif code == "clear":
       print_clear()
+    elif code == "end":
+      mansion.end_game()
     elif code == "code":
       mansion.print_code()
     elif code == "map":

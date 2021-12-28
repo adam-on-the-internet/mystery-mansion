@@ -42,6 +42,8 @@ class MyMansion:
         else:
           return str(space_code) + " ?"
     return "!!!!"
+  def end_game(self):
+    self.game_over = True
   def print_code(self):
     print("Mansion Code: " + self.id)
   def print_map(self):
@@ -76,8 +78,6 @@ class MyMansion:
       return self.check_code_with_answers(code, answers)
   def check_code(self, code):
     return self.check_code_with_answers(code, [])
-  def end_game(self):
-    self.game_over = True
   def check_code_with_answers(self, code, answers):
     message = ""
     for space in self.spaces:
