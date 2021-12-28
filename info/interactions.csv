@@ -24,9 +24,9 @@ public hint,Public Hint #13,,The money is NOT in the _notfurniture10_.
 public hint,Public Hint #14,,The money is NOT in the _notfurniture11_.
 public hint,Public Hint #15,,The money is NOT in the _notfurniture12_.
 private hint L0,Private Hint #1,,The money is NOT in the _notfurniture13_.
-private hint L0,Private Hint #2,,The money is NOT in the _notfurniture14_.
-private hint L0,Private Hint #3,,The money is NOT in the _notfurniture15_.
-private hint L0,Private Hint #4,,The money is NOT in the _notfurniture16_.
+private hint L0,Private Hint #2,,Look in the _clue1_ for a clue.
+private hint L0,Private Hint #3,,Look in the _clue2_ for a clue.
+private hint L0,Private Hint #4,,Look in the _clue3_ for a clue.
 private hint L0,Private Hint #5,,The money is NOT in the _notroom4_.
 private hint L0,Private Hint #6,,The money is NOT in the _notroom5_.
 private hint L0,Private Hint #7,,The money is NOT in the _notroom6_.

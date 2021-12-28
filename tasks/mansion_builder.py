@@ -121,6 +121,12 @@ def get_money_furniture(spaces):
       if interaction.has_money():
         return interaction.furniture
 
+def get_clue_furniture(spaces, clue_number):
+  for space in spaces:
+    for interaction in space.interactions:
+      if interaction.name == "Clue #" + clue_number:
+        return interaction.furniture.name
+
 def get_not_money_furniture(spaces):
   not_money_furniture = []
   money_furniture = get_money_furniture(spaces).name
@@ -152,6 +158,10 @@ def populate_space_hint(interaction, spaces):
     if interaction.furniture.name == not_money_furniture_selected:
       not_money_furniture_selected = not_money_furniture[int(furniture_number) - 1 + 16]
     interaction.hint = interaction.hint.replace("_notfurniture" + furniture_number + "_", not_money_furniture_selected)
+  elif "_clue" in interaction.hint:
+    clue_number = get_partial_string('_clue(.*)_', interaction.hint)
+    clue_furniture = get_clue_furniture(spaces, clue_number)
+    interaction.hint = interaction.hint.replace("_clue" + clue_number + "_", clue_furniture)
   elif "_notroom" in interaction.hint:
     space_number = get_partial_string('_notroom(.*)_', interaction.hint)
     not_money_spaces = get_not_money_spaces(spaces)
