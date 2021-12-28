@@ -5,7 +5,10 @@ import pyttsx3
 def say_and_print_message(engine, message, secret_message):
   print(message)
   if secret_message != "":
-    print("(FOR YOUR EYES ONLY) " + secret_message)
+    print()
+    print("** FOR YOUR EYES ONLY **")
+    print(secret_message)
+    print("** FOR YOUR EYES ONLY **")
   if engine is not None:
     engine.say(message)
     engine.runAndWait()
@@ -75,7 +78,6 @@ engine = choose_voice()
 message = ""
 code = ""
 answers = []
-turn_count = 1
 
 welcome_message = "Welcome to Mystery Mansion!"
 say_and_print_message(engine, welcome_message, "")
@@ -98,11 +100,11 @@ while not mansion.game_over:
   else:
     print()
     print()
-    print("~~~~ Turn #" + str(turn_count) + " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+    print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
     print()
-    turn_count = turn_count + 1
     print("Enter a Room Code, Furniture Code, or 'help' for more options.")
     code = input("Enter code:\n").lower()
+
     if code == "help":
       print_help()
     elif code == "roll":
@@ -127,20 +129,22 @@ while not mansion.game_over:
   
   print()
   if message != "":
-    private_message_disclaimer = "\nBEEP BEEP. Look at the screen for a private message for your eyes only.\n When you are finished, hit ENTER to clear the screen."
-    if len(clue_deck) != 0 and "You found a clue!" in message:
+    secret_message = ""
+    private_message_disclaimer = "\nBEEP BEEP. Look at the screen for a secret message.\nWhen you are finished, hit ENTER to clear the screen."
+    should_deal_virtual_clue = len(clue_deck) != 0 and "You found a clue!" in message
+    is_private_message = "** FOR YOUR EYES ONLY **" in message
+
+    if should_deal_virtual_clue:
       drawn_clue = clue_deck.pop()
       message = message + private_message_disclaimer
-      secret_message = "Add this clue to your inventory : " + drawn_clue
-      say_and_print_message(engine, message, secret_message)
-      use_manual_clear()
-    elif "(FOR YOUR EYES ONLY)" in message:
-      split_message = message.split("(FOR YOUR EYES ONLY)")
+      secret_message = "Add this clue to your inventory: " + drawn_clue
+    elif is_private_message:
+      split_message = message.split("** FOR YOUR EYES ONLY **")
       message = split_message[0].strip()
       message = message + private_message_disclaimer
       secret_message = split_message[1].strip()
-      say_and_print_message(engine, message, secret_message)
+
+    say_and_print_message(engine, message, secret_message)
+    if secret_message != "":
       use_manual_clear()
-    else:
-      say_and_print_message(engine, message, '')
 

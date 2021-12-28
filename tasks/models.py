@@ -115,7 +115,7 @@ class MyAsset:
   def get_is_person_or_item(self):
     return self.asset_type == "person or item"
   def to_string(self):
-    return self.clue.name + " : " + self.name
+    return self.clue.name + ": " + self.name
 
 class MyInteraction:
   def __init__(self, interaction_type, name, requirement, hint, furniture, discovered, clues_taken):
@@ -157,7 +157,7 @@ class MyInteraction:
     else:
       return ""
   def to_string(self):
-    return self.furniture.name + " (code " + self.furniture.game_code + ") : " + self.name + self.requirement_message() + self.hint_message()
+    return self.furniture.name + " (code " + self.furniture.game_code + "): " + self.name + self.requirement_message() + self.hint_message()
   def get_message(self, answers):
     if not self.discovered:
       return "Sorry, this item is not yet discovered."
@@ -181,7 +181,7 @@ class MyInteraction:
       elif self.has_public_hint():
         message = self.hint
       elif self.has_private_hint():
-        message = "(FOR YOUR EYES ONLY) " + self.hint
+        message = "** FOR YOUR EYES ONLY ** " + self.hint
       else:
         message = "Invalid input."
     elif ask_requirement_1:
@@ -193,7 +193,7 @@ class MyInteraction:
     else:
       message = "Invalid input."
 
-    return self.furniture.name + " (" + self.furniture.game_code + ") : " + message
+    return self.furniture.name + " (" + self.furniture.game_code + "): " + message
 
 class MySpace:
   def __init__(self, game_code, name, can_be_locked, is_locked, room, interactions, discovered):
@@ -233,7 +233,7 @@ class MySpace:
             furniture_name = furniture.linked_text
             furniture_code = furniture_code + " & " + furniture.linked_code
           message = message + "\n - " + furniture_name + " (" + furniture_code + ")"
-    return "Room " + self.game_code + " : " + message
+    return "Room " + self.game_code + ": " + message
 
 class MyRoom:
   def __init__(self, name):
