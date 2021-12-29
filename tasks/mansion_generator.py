@@ -1,5 +1,5 @@
 from tasks.info_reader import read_furniture, read_rooms, read_spaces, read_interactions
-from tasks.clue_selector import setup_clues
+from tasks.clue_generator import generate_clues
 from tasks.models import MyMansion
 import random
 import re
@@ -192,7 +192,7 @@ def setup_spaces(assets):
   spaces = populate_spaces(interactions)
   return populate_messages(spaces, assets)
 
-def setup_mansion(style):
-  assets = setup_clues()
+def generate_mansion(style):
+  assets = generate_clues()
   spaces = setup_spaces(assets)
   return MyMansion(style, assets, spaces, [], False, 0)

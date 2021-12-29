@@ -1,7 +1,7 @@
 from tasks.info_reader import read_clues, read_assets
 import random
 
-def setup_clues():
+def generate_clues():
   assets = read_assets()
   random.shuffle(assets)
   clues = read_clues()
