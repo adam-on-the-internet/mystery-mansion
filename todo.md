@@ -3,6 +3,7 @@
 - Add Logging
   - add log of actions in a particular game
   - add log of actions overall
+- Allow the app to "play" a previously created mansion (by code)
 - Upload Mansions
   - upload Mansion (.md or otherwise)
   - have a separate app that reads the Mansions to display or even to play the game
