@@ -18,7 +18,7 @@ When playing a game, you'll have a few options with prompts:
 
 ### Generate a Game
 
-Run "python generate-game.py" to randomly generate a game setup. 
+Run "python generate-game.py" to randomly generate a Mansion without playing the game. Mansions are created locally under the _mansions directory.
 
 When generating a game you can include one or two optional command line arguments:
 
