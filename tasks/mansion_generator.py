@@ -1,4 +1,4 @@
-from tasks.info_reader import read_furniture, read_rooms, read_spaces, read_interactions
+from tasks.style_reader import read_furniture, read_rooms, read_spaces, read_interactions
 from tasks.clue_generator import generate_clues
 from tasks.models import MyMansion
 import random
@@ -18,14 +18,14 @@ def get_non_clue_interactions(interactions):
       matching_interactions.append(interaction)
   return matching_interactions
 
-def setup_interactions():
-  interactions = read_interactions()
+def setup_interactions(style):
+  interactions = read_interactions(style)
   random.shuffle(interactions)
 
   clue_interactions = get_clue_interactions(interactions)
   non_clue_interactions = get_non_clue_interactions(interactions)
   
-  furniture = read_furniture()
+  furniture = read_furniture(style)
   random.shuffle(furniture)
 
   # We set a max of 1 clue interaction per room.
@@ -51,8 +51,8 @@ def setup_interactions():
   all_interactions = clue_interactions + non_clue_interactions
   return all_interactions
 
-def get_rooms():
-  rooms = read_rooms()
+def get_rooms(style):
+  rooms = read_rooms(style)
   random.shuffle(rooms)
   return rooms
 
@@ -64,9 +64,9 @@ def get_locked_spaces(spaces):
   random.shuffle(lockable_spaces)
   return lockable_spaces[:2]  
 
-def populate_spaces(interactions):
-  rooms = get_rooms()
-  spaces = read_spaces()
+def populate_spaces(interactions, style):
+  rooms = get_rooms(style)
+  spaces = read_spaces(style)
   locked_spaces = get_locked_spaces(spaces)
   for index, space in enumerate(spaces):
     space.is_locked = space.name in locked_spaces
@@ -187,12 +187,12 @@ def populate_messages(spaces, assets):
         populate_requirement(interaction, assets)
   return spaces
 
-def setup_spaces(assets):
-  interactions = setup_interactions()
-  spaces = populate_spaces(interactions)
+def setup_spaces(assets, style):
+  interactions = setup_interactions(style)
+  spaces = populate_spaces(interactions, style)
   return populate_messages(spaces, assets)
 
 def generate_mansion(style):
-  assets = generate_clues()
-  spaces = setup_spaces(assets)
+  assets = generate_clues(style)
+  spaces = setup_spaces(assets, style)
   return MyMansion(style, assets, spaces, [], False, 0)

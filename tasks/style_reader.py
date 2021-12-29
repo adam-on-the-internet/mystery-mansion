@@ -2,8 +2,12 @@ from csv import reader
 from tasks.models import MyAsset, MyInteraction, MyClue, MyFurniture, MySpace, MyRoom
 import random
 
-def read_assets():
-  with open("./info/assets.csv", newline='') as asset_file:
+def get_style_file_path(style, file):
+  return "./style/" + style + "/" + file + ".csv"
+
+def read_assets(style):
+  file_path = get_style_file_path(style, "assets")
+  with open(file_path, newline='') as asset_file:
     asset_reader = reader(asset_file, delimiter=',')
     assets = []
     for index, row in enumerate(asset_reader):
@@ -14,8 +18,9 @@ def read_assets():
         assets.append(myAsset)
     return assets  
 
-def read_interactions():
-  with open("./info/interactions.csv", newline='') as interaction_file:
+def read_interactions(style):
+  file_path = get_style_file_path(style, "interactions")
+  with open(file_path, newline='') as interaction_file:
     interaction_reader = reader(interaction_file, delimiter=',')
     interactions = []
     for index, row in enumerate(interaction_reader):
@@ -28,8 +33,9 @@ def read_interactions():
         interactions.append(myInteraction)
     return interactions  
 
-def read_spaces():
-  with open("./info/spaces.csv", newline='') as space_file:
+def read_spaces(style):
+  file_path = get_style_file_path(style, "spaces")
+  with open(file_path, newline='') as space_file:
     space_reader = reader(space_file, delimiter=',')
     spaces = []
     for index, row in enumerate(space_reader):
@@ -42,8 +48,9 @@ def read_spaces():
         spaces.append(mySpace)
     return spaces
 
-def read_rooms():
-  with open("./info/rooms.csv", newline='') as room_file:
+def read_rooms(style):
+  file_path = get_style_file_path(style, "rooms")
+  with open(file_path, newline='') as room_file:
     room_reader = reader(room_file, delimiter=',')
     rooms = []
     for index, row in enumerate(room_reader):
@@ -53,8 +60,9 @@ def read_rooms():
         rooms.append(myRoom)
     return rooms[:9] 
 
-def read_furniture():
-  with open("./info/furniture.csv", newline='') as furniture_file:
+def read_furniture(style):
+  file_path = get_style_file_path(style, "furniture")
+  with open(file_path, newline='') as furniture_file:
     furniture_reader = reader(furniture_file, delimiter=',')
     furniture = []
     for index, row in enumerate(furniture_reader):
@@ -71,8 +79,9 @@ def read_furniture():
         furniture.append(myFurniture)
     return furniture[:35]
 
-def read_clues():
-  with open("./info/clues.csv", newline='') as clue_file:
+def read_clues(style):
+  file_path = get_style_file_path(style, "clues")
+  with open(file_path, newline='') as clue_file:
     clue_reader = reader(clue_file, delimiter=',')
     clues = []
     for index, row in enumerate(clue_reader):

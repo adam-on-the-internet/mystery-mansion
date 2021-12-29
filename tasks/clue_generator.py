@@ -1,10 +1,10 @@
-from tasks.info_reader import read_clues, read_assets
+from tasks.style_reader import read_clues, read_assets
 import random
 
-def generate_clues():
-  assets = read_assets()
+def generate_clues(style):
+  assets = read_assets(style)
   random.shuffle(assets)
-  clues = read_clues()
+  clues = read_clues(style)
 
   # assign keys to key assets
   key_clues = []
