@@ -15,7 +15,7 @@ def setup_mansion_file(id):
   f.close()  
 
 def get_mansions_directory():
-  return "mansions/"
+  return "_mansions/"
 
 def get_mansion_directory(id):
   mansion_directory = get_mansions_directory()
@@ -43,6 +43,7 @@ def write_mansion_title(mansion):
   lines = [
     "# Mystery Mansion",
     "",
+    "- style: " + mansion.style,
     "- id: " + mansion.id,
     "- generated: " + str(now),
     ""
@@ -68,7 +69,7 @@ def write_mansion_rooms(mansion):
   for space in mansion.spaces:
     lines.append("### " + space.to_string())
     lines.append("")
-    lines.append("Furniture: (count " + str(len(space.interactions)) + ")")
+    lines.append("Furniture: (" + str(len(space.interactions)) + " items)")
     lines.append("")
     for interaction in space.interactions:
       lines.append("- " + interaction.to_string())

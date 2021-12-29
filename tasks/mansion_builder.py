@@ -192,7 +192,7 @@ def setup_spaces(assets):
   spaces = populate_spaces(interactions)
   return populate_messages(spaces, assets)
 
-def setup_mansion(id):
+def setup_mansion(style):
   assets = setup_clues()
   spaces = setup_spaces(assets)
-  return MyMansion(id, assets, spaces, [], False, 0)
+  return MyMansion(style, assets, spaces, [], False, 0)

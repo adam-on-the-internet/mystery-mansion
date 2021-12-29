@@ -1,4 +1,3 @@
-games/*
-mansions/*
+_mansions/*
 */__pycache__/*
 *__init__.py

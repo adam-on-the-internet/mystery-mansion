@@ -1,6 +1,9 @@
+from util.string_utils import get_four_letter_id
+
 class MyMansion:
-  def __init__(self, id, assets, spaces, code_history, game_over, clues_taken):
-    self.id = id
+  def __init__(self, style, assets, spaces, code_history, game_over, clues_taken):
+    self.id = get_four_letter_id()
+    self.style = style
     self.assets = assets
     self.spaces = spaces
     self.code_history = code_history
