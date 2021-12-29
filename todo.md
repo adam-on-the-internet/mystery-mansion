@@ -2,7 +2,6 @@
 
 ## Current
 
-- Use MODEL files
 - Allow game "play" with different styles
 
 ## Future
