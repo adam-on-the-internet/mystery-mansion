@@ -1,6 +1,6 @@
 from tasks.clue_generator import generate_clues
 from tasks.space_generator import generate_spaces
-from tasks.models import MyMansion
+from models.mansion import MyMansion
 
 def generate_mansion(style):
   assets = generate_clues(style)

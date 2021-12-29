@@ -1,5 +1,12 @@
 # TODO
 
+## Current
+
+- Use MODEL files
+- Allow game "play" with different styles
+
+## Future
+
 - Add Logging
   - add log of actions in a particular game
   - add log of actions overall
