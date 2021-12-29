@@ -15,6 +15,9 @@
   - have a separate app that reads the Mansions to display or even to play the game
 - Browser Player
   - find a way to play the game via browser, app, or otherwise
+    - version one: virtual board & virtual pawns (to play with command-line app, it will likely need to be able to play existing games)
+    - version two: fully playable in browser
+    - version three: fully playable in browser in multiple devices at once
 - Physical Companion Guide
   - produce a guide to how to play the game with some home-made pieces
 - Twitter Bot
