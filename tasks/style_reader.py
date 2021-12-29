@@ -1,5 +1,10 @@
 from csv import reader
-from tasks.models import MyAsset, MyInteraction, MyClue, MyFurniture, MySpace, MyRoom
+from models.asset import MyAsset
+from models.interaction import MyInteraction
+from models.clue import MyClue
+from models.furniture import MyFurniture
+from models.space import MySpace
+from models.room import MyRoom
 import random
 
 def get_style_file_path(style, file):
