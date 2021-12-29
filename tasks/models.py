@@ -41,7 +41,7 @@ class MyMansion:
           return " " + str(space_code) + " "
         else:
           return str(space_code) + " ?"
-    return "!!!!"
+    return "____"
   def end_game(self):
     self.game_over = True
   def print_code(self):
