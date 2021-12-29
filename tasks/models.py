@@ -34,13 +34,13 @@ class MyMansion:
           print(interaction.furniture.name + " (" + interaction.furniture.game_code + ")")
         else:
           print("???")
-  def check_space_discovery(self, space_code):
+  def check_space_discovery(self, x, y):
     for space in self.spaces:
-      if str(space.game_code) == str(space_code):
+      if str(x) == space.coordinates[0] and str(y) == space.coordinates[1]:
         if space.discovered:
-          return " " + str(space_code) + " "
+          return " " + str(space.game_code) + " "
         else:
-          return str(space_code) + " ?"
+          return str(space.game_code) + " ?"
     return "____"
   def end_game(self):
     self.game_over = True
@@ -52,15 +52,15 @@ class MyMansion:
     print("          ______          ")
     print("0--------/      \--------o")
     print("|       |        |       |")
-    print("| " + self.check_space_discovery(22) + "  x  " + self.check_space_discovery(21) + "  x " + self.check_space_discovery(14) + "  |")
+    print("| " + self.check_space_discovery(2,-1) + "  x  " + self.check_space_discovery(2,0) + "  x " + self.check_space_discovery(2,1) + "  |")
     print("|       |        |       |")
     print("o---xx------xx------xx---o")
     print("|       |        |       |")
-    print("| " + self.check_space_discovery(23) + "  x  " + self.check_space_discovery(31) + "  x " + self.check_space_discovery(13) + "  |")
+    print("| " + self.check_space_discovery(1,-1) + "  x  " + self.check_space_discovery(1,0) + "  x " + self.check_space_discovery(1,1) + "  |")
     print("|       |        |       |")
     print("o---xx------xx------xx---o")
     print("|       |        |       |")
-    print("| " + self.check_space_discovery(24) + "  x  " + self.check_space_discovery(11) + "  x " + self.check_space_discovery(12) + "  |")
+    print("| " + self.check_space_discovery(0,-1) + "  x  " + self.check_space_discovery(0,0) + "  x " + self.check_space_discovery(0,1) + "  |")
     print("|       |        |       |")
     print("o-----------xx-----------o")
     print("        | start  |       ")
@@ -209,7 +209,8 @@ class MyInteraction:
     return self.furniture.name + " (" + self.furniture.game_code + "): " + message
 
 class MySpace:
-  def __init__(self, game_code, name, can_be_locked, is_locked, room, interactions, discovered):
+  def __init__(self, coordinates, game_code, name, can_be_locked, is_locked, room, interactions, discovered):
+    self.coordinates = coordinates
     self.game_code = game_code
     self.name = name
     self.can_be_locked = can_be_locked

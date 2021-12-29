@@ -75,7 +75,8 @@ def choose_voice():
   else:
     return None
 
-mansion = generate_game()
+style = "classic"
+mansion = generate_game(style)
 clue_deck = build_virtual_clue_deck(mansion)
 engine = choose_voice()
 

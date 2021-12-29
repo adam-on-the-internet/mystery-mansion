@@ -14,9 +14,10 @@ start_time = datetime.datetime.now()
 log_start_message(start_time)
 
 # run
-mansion = generate_game()
+style = "classic"
+mansion = generate_game(style)
 print()
-print("Generated mansion " + mansion.id)
+print("Generated " + style + " mansion " + mansion.id)
 print()
 
 # end

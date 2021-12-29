@@ -34,10 +34,11 @@ def read_spaces():
     spaces = []
     for index, row in enumerate(space_reader):
       if index > 0 and len(row) > 0:
-        game_code = row[0].strip()
-        name = row[1].strip()
-        can_be_locked = row[2].strip() == "true"
-        mySpace = MySpace(game_code, name, can_be_locked, False, '', '', False)
+        coordinates = row[0].strip().split("|")
+        game_code = row[1].strip()
+        name = row[2].strip()
+        can_be_locked = row[3].strip() == "true"
+        mySpace = MySpace(coordinates, game_code, name, can_be_locked, False, '', '', False)
         spaces.append(mySpace)
     return spaces
 

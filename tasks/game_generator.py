@@ -1,11 +1,9 @@
 from tasks.game_initializer import initialize_game
-from tasks.clue_selector import setup_clues
 from tasks.mansion_builder import setup_mansion
 from tasks.mansion_saver import save_mansion
 
-def generate_game():
+def generate_game(game_style):
   id = initialize_game()
-  assets = setup_clues(id)
-  mansion = setup_mansion(id, assets)
+  mansion = setup_mansion(id)
   save_mansion(mansion)
   return mansion
