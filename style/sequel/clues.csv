@@ -2,11 +2,11 @@ type, name
 
 key,Rusty Key
 key,Shiny Key
-item,Photos
-item,Map
-item,Tape
-item,Letter
-person,Cook
-person,Chauffeur
-person,Butler
-person,Maid
+item,Film
+item,Will
+item,Painting
+item,Manuscript
+person,Gardener
+person,Nanny
+person,Uncle
+person,Lawyer

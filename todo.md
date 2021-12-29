@@ -20,5 +20,5 @@
 
 - Variations
   - First make a "mansion 2" that works the same but has different rooms, furniture, codes, etc
-  - Then make an alternate mansion with a different theme & play style 
+  - Then make an alternate mansion with a different theme & furniture/clue/etc numbers
   - Then make a different game with a similar system
