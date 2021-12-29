@@ -1,6 +1,5 @@
 # TODO
 
-- generate script, add optional # arg for how many mansions to generate
 - Add Logging
   - add log of actions in a particular game
   - add log of actions overall
@@ -16,3 +15,10 @@
 - Alternate Furniture, etc
   - create alternate Mansion setup (rooms, furniture, etc)
 - Allow selecting a game by the code
+
+## Concepts
+
+- Variations
+  - First make a "mansion 2" that works the same but has different rooms, furniture, etc
+  - Then make an alternate mansion with a different theme & play style 
+  - Then make a different game with a similar system
