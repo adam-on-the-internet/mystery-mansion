@@ -1,4 +1,3 @@
-from tasks.game_file_writer import add_lines_to_file
 from tasks.info_reader import read_furniture, read_rooms, read_spaces, read_interactions
 from tasks.models import MyMansion
 import random
@@ -48,7 +47,8 @@ def setup_interactions():
   for index, interaction in enumerate(non_clue_interactions):
     interaction.furniture = furniture[index]
 
-  return clue_interactions + non_clue_interactions  
+  all_interactions = clue_interactions + non_clue_interactions
+  return all_interactions
 
 def get_rooms():
   rooms = read_rooms()
@@ -124,15 +124,17 @@ def get_money_furniture(spaces):
 def get_clue_furniture(spaces, clue_number):
   for space in spaces:
     for interaction in space.interactions:
-      if interaction.name == "Clue #" + clue_number:
-        return interaction.furniture.name
+      if "clue" in interaction.interaction_type:
+        if interaction.name.strip() == "Clue #" + str(clue_number):
+          return interaction.furniture.name
 
 def get_not_money_furniture(spaces):
   not_money_furniture = []
-  money_furniture = get_money_furniture(spaces).name
+  money_furniture = get_money_furniture(spaces)
+  name = money_furniture.name
   for space in spaces:
     for interaction in space.interactions:
-      if money_furniture != interaction.furniture.name:
+      if name != interaction.furniture.name:
         not_money_furniture.append(interaction.furniture.name)
   return not_money_furniture
 
@@ -189,15 +191,6 @@ def setup_spaces(assets):
   spaces = populate_spaces(interactions)
   return populate_messages(spaces, assets)
 
-def describe_spaces(spaces, id):
-  lines = ["## Rooms"]
-  for space in spaces:
-    lines.append("### " + space.to_string())
-    for interaction in space.interactions:
-      lines.append("- " + interaction.to_string())
-  add_lines_to_file(lines, id)  
-
 def setup_mansion(id, assets):
   spaces = setup_spaces(assets)
-  describe_spaces(spaces, id)
   return MyMansion(id, assets, spaces, [], False, 0)

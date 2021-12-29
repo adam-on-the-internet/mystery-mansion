@@ -9,12 +9,17 @@ def log_end_message(start_time, end_time):
   print("~ MANSION FINISHED GENERATING @ " + str(end_time))
   print("~ generation took " + str(length))
 
+# TODO allow an optional arg for # of mansions to generate (default one)
+
 # start
 start_time = datetime.datetime.now()
 log_start_message(start_time)
 
 # run
 mansion = generate_game()
+print()
+print("Generated mansion " + mansion.id)
+print()
 
 # end
 end_time = datetime.datetime.now()

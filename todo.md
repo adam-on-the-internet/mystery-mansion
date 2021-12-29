@@ -1,5 +1,6 @@
 # TODO
 
+- generate script, add optional # arg for how many mansions to generate
 - Add Logging
   - add log of actions in a particular game
   - add log of actions overall

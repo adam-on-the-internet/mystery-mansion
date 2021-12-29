@@ -1,14 +1,5 @@
-from tasks.game_file_writer import add_line_to_file, add_lines_to_file
 from tasks.info_reader import read_clues, read_assets
 import random
-
-def describe_assets(assets, id):
-  lines = [
-    "## Clues",
-  ]
-  for asset in assets:
-    lines.append("- " + asset.to_string())
-  add_lines_to_file(lines, id)
 
 def setup_clues(id):
   assets = read_assets()
@@ -63,5 +54,4 @@ def setup_clues(id):
   for index, asset in enumerate(people_or_item_assets):
     asset.clue = remaining_clues[index]
   all_assets = key_assets + people_assets + item_assets + people_or_item_assets
-  describe_assets(all_assets, id)
   return all_assets
