@@ -2,7 +2,7 @@
 
 ## Current
 
-- Allow game "play" with different styles
+- Work on "Sequel"
 
 ## Future
 

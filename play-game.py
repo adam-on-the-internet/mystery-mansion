@@ -50,10 +50,11 @@ def print_clear():
   print("\n\n\n\n\n\n\n\n\n\n")
   print("\n\n\n\n\n\n\n\n\n\n")
   print("\n\n\n\n\n\n\n\n\n\n")
+  print("\n\n\n\n\n\n\n\n\n\n")
 
 def build_virtual_clue_deck(mansion):
   print()
-  print("Setup 1 of 2:")
+  print("Setup 2 of 3:")
   input_deck_choice = input("Would you like to use a virtual Clue Deck? (y/n)\n").lower()
   use_virtual_deck = input_deck_choice == "y" or input_deck_choice == "yes"
 
@@ -66,7 +67,7 @@ def build_virtual_clue_deck(mansion):
 
 def choose_voice():
   print()
-  print("Setup 2 of 2:")
+  print("Setup 3 of 3:")
   voice_choice = input("Would you like to use text-to-speech? (y/n)\n").lower()
   print()
   use_voice = voice_choice == "y" or voice_choice == "yes"
@@ -75,7 +76,21 @@ def choose_voice():
   else:
     return None
 
-style = "classic"
+def choose_style():
+  print()
+  print("Setup 1 of 3:")
+  style_choice = input("What game style would you like?\n\nEnter 1 for CLASSIC (to use with physical game)\nEnter 2 for SEQUEL (experimental, does not work with phyiscal game)\n\n").lower()
+  print()
+  if str(style_choice) == "2":
+    return "sequel"
+  elif str(style_choice == "1"):
+    return "classic"
+  else:
+    return "classic"
+
+# generate mansion with inputs
+style = choose_style()
+print(style.upper() + " style selected.")
 mansion = generate_game(style)
 clue_deck = build_virtual_clue_deck(mansion)
 engine = choose_voice()
@@ -83,12 +98,8 @@ engine = choose_voice()
 message = ""
 code = ""
 answers = []
-
-welcome_message = "Welcome to Mystery Mansion!"
-say_and_print_message(engine, welcome_message, "")
-
+say_and_print_message(engine, "Welcome to Mystery Mansion!", "")
 print()
-print(welcome_message)
 mansion.print_code()
 print()
 mansion.print_map()
