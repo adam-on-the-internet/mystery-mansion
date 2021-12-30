@@ -5,10 +5,46 @@ from models.clue import MyClue
 from models.furniture import MyFurniture
 from models.space import MySpace
 from models.room import MyRoom
+from models.setting import MySetting
 import random
 
 def get_style_file_path(style, file):
   return "./style/" + style + "/" + file + ".csv"
+
+def read_settings(style):
+  file_path = get_style_file_path(style, "settings")
+  with open(file_path, newline='') as settings_file:
+    setting_reader = reader(settings_file, delimiter=',')
+    settings = []
+    for index, row in enumerate(setting_reader):
+      if index > 0 and len(row) > 0:
+        name = row[0].strip()
+        value = row[1].strip()
+        mySetting = MySetting(name, value)
+        settings.append(mySetting)
+    return settings  
+
+def read_rooms_setting(style):
+  setting = read_setting(style, "rooms")
+  return int(setting)
+
+def read_furniture_setting(style):
+  setting = read_setting(style, "furniture")
+  return int(setting)
+
+def read_locked_rooms(style):
+  setting = read_setting(style, "locked rooms")
+  return int(setting)
+
+def read_clues(style):
+  setting = read_setting(style, "clues")
+  return int(setting)
+
+def read_setting(style, name):
+  settings = read_settings(style)
+  for setting in settings:
+    if setting.name == name:
+      return setting.value
 
 def read_assets(style):
   file_path = get_style_file_path(style, "assets")
@@ -63,7 +99,8 @@ def read_rooms(style):
         name = row[0].strip()
         myRoom = MyRoom(name)
         rooms.append(myRoom)
-    return rooms[:9] 
+    room_count = read_rooms_setting(style)
+    return rooms[:room_count] 
 
 def read_furniture(style):
   file_path = get_style_file_path(style, "furniture")
@@ -82,7 +119,8 @@ def read_furniture(style):
         selected_room = available_rooms[0].strip()
         myFurniture = MyFurniture(game_code, name, rooms, linked_code, linked_text, selected_room)
         furniture.append(myFurniture)
-    return furniture[:35]
+    furniture_count = read_furniture_setting(style)
+    return furniture[:furniture_count]
 
 def read_clues(style):
   file_path = get_style_file_path(style, "clues")

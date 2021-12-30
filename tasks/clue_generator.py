@@ -43,8 +43,16 @@ def generate_clues(style):
     asset.clue = item_clues[index]
 
   # assign remaining clues to remaining assets
-  remaining_people = people_clues[-2:]
-  remaining_items = item_clues[-2:]
+
+  generic_assets = 0 # count assets that use a person OR an item
+  for asset in assets:
+    if asset.get_is_person_or_item():
+      generic_assets = generic_assets + 1
+  half_generic_assets = int(generic_assets / 2)
+  generic_buffer = -1 * half_generic_assets # -2 for classic/sequel, -1 for small
+  
+  remaining_people = people_clues[generic_buffer:]
+  remaining_items = item_clues[generic_buffer:]
   remaining_clues = remaining_people + remaining_items
   random.shuffle(remaining_clues)
   people_or_item_assets = []

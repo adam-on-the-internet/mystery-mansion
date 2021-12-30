@@ -1,0 +1,23 @@
+type, name, requirement, hint
+
+money,The Money,_personanditemformoney_,
+
+clue,Clue #1,,
+clue,Clue #2,,
+clue,Clue #3,,
+
+public hint,Public Hint #1,,The money is NOT in the _notroom1_.
+public hint,Public Hint #2,,The money is NOT in the _notfurniture1_.
+public hint,Public Hint #3,,The money is NOT in the _notfurniture2_.
+public hint,Public Hint #4,,The money is NOT in the _notfurniture3_.
+public hint,Public Hint #5,,The money is NOT in the _notfurniture4_.
+public hint,Public Hint #6,,The money is NOT in the _notfurniture5_.
+public hint,Public Hint #7,,The money is NOT in the _notfurniture6_.
+public hint,Public Hint #8,,The money is NOT in the _notfurniture7_.
+
+private hint L0,Private Hint #1,,The money is NOT in the _notfurniture8_.
+private hint L0,Private Hint #2,,Look in the _clue1_ for a clue.
+private hint L0,Private Hint #3,,The money is NOT in the _notroom2_.
+private hint L0,Private Hint #4,,The money is NOT in the _notroom3_.
+private hint L1,Private Hint #5,_personoritemforhint5_,To find the money you need the _moneyperson_.
+private hint L1,Private Hint #6,_personoritemforhint6_,To find the money you need the _moneyitem_.

@@ -2,8 +2,12 @@
 
 ## Current
 
-- Work on "Sequel"
+- test "small", regress "classic" and "sequel"
+- way to "test" that mansions are valid automatically? no duplicates, etc?
+
+- Work on "Sequel", "Small", "Big"
 - Add GUI https://realpython.com/pysimplegui-python/
+- Humble Assets: House
 
 ## Future
 
@@ -31,5 +35,5 @@
 
 - Variations
   - First make a "mansion 2" that works the same but has different rooms, furniture, codes, etc
-  - Then make an alternate mansion with a different theme & furniture/clue/etc numbers
+  - Then make an alternate mansion with a different theme & furniture/clue/etc numbers ("spooky manor" instead of "mystery mansion"), spare rooms & clues ?
   - Then make a different game with a similar system

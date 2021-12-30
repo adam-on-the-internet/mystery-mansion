@@ -1,0 +1,24 @@
+code,name,rooms,linked code, linked text
+
+121,Sofa,Living Room,,
+122,Coffee Table,Living Room,,
+221,Clock,Living Room,,
+234,Fish Tank,Living Room,,
+
+123,Bed,Bedroom,,
+124,Dresser,Bedroom,,
+224,Rug,Bedroom,,
+131,Small Bookcase,Bedroom,,
+
+144,Large Bookcase,Library,,
+232,Knight,Library,,
+243,Easel,Library,,
+222,Computer,Library,,
+
+132,Refrigerator,Kitchen,,
+133,Sink,Kitchen,,
+134,Oven,Kitchen,,
+141,Kitchen Table,Kitchen,,
+
+242,Planter,Kitchen|Living Room,,
+214,Telescope,Library|Bedroom,,

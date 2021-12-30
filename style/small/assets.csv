@@ -1,0 +1,8 @@
+name, type
+
+Key,key
+Person for Money,person
+Item for Money,item
+Clue for Hint #5,person or item
+Clue for Hint #6,person or item
+Useless,useless

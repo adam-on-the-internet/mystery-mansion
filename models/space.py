@@ -25,7 +25,7 @@ class MySpace:
       message = message + "Door unlocked. Discard the Key you used to open this door.\n"
 
     if self.is_locked:
-      message = message + "This room is LOCKED. Do you have a KEY?"
+      message = message + "This room is LOCKED. Do you have a KEY?" # TODO make "key" generic so it can be replaced by "password", etcs
     else:
       self.discover()
       message = message + "This is the " + self.room.name + ". You see the following:"

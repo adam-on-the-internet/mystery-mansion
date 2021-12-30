@@ -1,4 +1,4 @@
-from tasks.style_reader import read_rooms, read_spaces
+from tasks.style_reader import read_rooms, read_spaces, read_locked_rooms
 from tasks.interaction_generator import generate_interactions
 import random
 import re
@@ -8,13 +8,14 @@ def get_rooms(style):
   random.shuffle(rooms)
   return rooms
 
-def get_locked_spaces(spaces):
+def get_locked_spaces(spaces, style):
   lockable_spaces = []
   for space in spaces:
     if space.can_be_locked:
       lockable_spaces.append(space.name)
   random.shuffle(lockable_spaces)
-  return lockable_spaces[:2]  
+  spaces_to_lock = read_locked_rooms(style)
+  return lockable_spaces[:spaces_to_lock]  
 
 def populate_requirement(interaction, assets):
   for asset in assets:
@@ -24,18 +25,21 @@ def populate_requirement(interaction, assets):
       interaction.required_assets.append(asset)
     elif asset.name == "Item for Money" and "_personanditemformoney_" in interaction.requirement:
       interaction.required_assets.append(asset)
-    elif asset.name == "Person for Hint #12" and "_personanditemforhint12_" in interaction.requirement:
-      interaction.required_assets.append(asset)
-    elif asset.name == "Item for Hint #12" and "_personanditemforhint12_" in interaction.requirement:
-      interaction.required_assets.append(asset)
-    elif asset.name == "Clue for Hint #11" and "_personoritemforhint11_" in interaction.requirement:
-      interaction.required_assets.append(asset)
-    elif asset.name == "Clue for Hint #10" and "_personoritemforhint10_" in interaction.requirement:
-      interaction.required_assets.append(asset)
-    elif asset.name == "Clue for Hint #9" and "_personoritemforhint9_" in interaction.requirement:
-      interaction.required_assets.append(asset)
-    elif asset.name == "Clue for Hint #8" and "_personoritemforhint8_" in interaction.requirement:
-      interaction.required_assets.append(asset)
+    elif "Person for Hint #" in asset.name and "_personanditemforhint" in interaction.requirement:
+      asset_hint_number = get_partial_string('Person for Hint #(.*)', asset.name)
+      requirement_hint_number = get_partial_string('_personanditemforhint(.*)_', interaction.requirement)
+      if asset_hint_number == requirement_hint_number:
+        interaction.required_assets.append(asset)
+    elif "Item for Hint #" in asset.name and "_personanditemforhint" in interaction.requirement:
+      asset_hint_number = get_partial_string('Item for Hint #(.*)', asset.name)
+      requirement_hint_number = get_partial_string('_personanditemforhint(.*)_', interaction.requirement)
+      if asset_hint_number == requirement_hint_number:
+        interaction.required_assets.append(asset)
+    elif "Clue for Hint #" in asset.name and "_personoritemforhint" in interaction.requirement:
+      asset_hint_number = get_partial_string('Clue for Hint #(.*)', asset.name)
+      requirement_hint_number = get_partial_string('_personoritemforhint(.*)_', interaction.requirement)
+      if asset_hint_number == requirement_hint_number:
+        interaction.required_assets.append(asset)
 
     random.shuffle(interaction.required_assets)
 
@@ -64,6 +68,13 @@ def get_clue_furniture(spaces, clue_number):
       if "clue" in interaction.interaction_type:
         if interaction.name.strip() == "Clue #" + str(clue_number):
           return interaction.furniture.name
+
+def get_furniture_count(spaces):
+  count = 0
+  for space in spaces:
+    for interaction in space.interactions:
+      count = count + 1
+  return count
 
 def get_not_money_furniture(spaces):
   not_money_furniture = []
@@ -95,7 +106,9 @@ def populate_space_hint(interaction, spaces):
     not_money_furniture_selected = not_money_furniture[int(furniture_number) - 1]
     # if the furniture being described is this furniture, select a different furniture
     if interaction.furniture.name == not_money_furniture_selected:
-      not_money_furniture_selected = not_money_furniture[int(furniture_number) - 1 + 16]
+      furniture_count_total = get_furniture_count(spaces)
+      half_furniture_count = int(furniture_count_total / 2)
+      not_money_furniture_selected = not_money_furniture[int(furniture_number) - 1 + (half_furniture_count)]
     interaction.hint = interaction.hint.replace("_notfurniture" + furniture_number + "_", not_money_furniture_selected)
   elif "_clue" in interaction.hint:
     clue_number = get_partial_string('_clue(.*)_', interaction.hint)
@@ -104,7 +117,7 @@ def populate_space_hint(interaction, spaces):
   elif "_notroom" in interaction.hint:
     space_number = get_partial_string('_notroom(.*)_', interaction.hint)
     not_money_spaces = get_not_money_spaces(spaces)
-    not_money_space = not_money_spaces[int(space_number)]
+    not_money_space = not_money_spaces[int(space_number) - 1]
     interaction.hint = interaction.hint.replace("_notroom" + space_number + "_", not_money_space)
   elif "_moneyroom_" in interaction.hint:
     money_room = get_money_room(spaces)
@@ -126,7 +139,7 @@ def populate_messages(spaces, assets):
 def populate_spaces(interactions, style):
   rooms = get_rooms(style)
   spaces = read_spaces(style)
-  locked_spaces = get_locked_spaces(spaces)
+  locked_spaces = get_locked_spaces(spaces, style)
   for index, space in enumerate(spaces):
     space.is_locked = space.name in locked_spaces
     space.room = rooms[index]

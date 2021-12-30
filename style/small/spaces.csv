@@ -1,0 +1,6 @@
+coordinates,game_code, name, canBeLocked
+
+1|0,14,1,true
+1|1,13,2,true
+0|0,11,3,false
+0|1,12,4,true
