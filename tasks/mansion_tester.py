@@ -33,3 +33,6 @@ def test_mansion(mansion):
   test_spaces(mansion.style, mansion.spaces)
   test_furniture(mansion.style, mansion.spaces)
   # TODO test mansion for more things
+  # NO ROOM should have more than 1 clue spot
+  # NO ROOM should have less than 2 items of furniture
+  # NO ROOM should have more than 5 items of furniture

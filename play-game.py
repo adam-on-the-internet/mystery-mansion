@@ -83,6 +83,8 @@ def choose_style():
   print()
   if str(style_choice) == "2":
     return "sequel"
+  elif str(style_choice == "3"):
+    return "small"
   elif str(style_choice == "1"):
     return "classic"
   else:

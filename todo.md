@@ -2,8 +2,9 @@
 
 ## Current
 
-- test "small", regress "classic" and "sequel"
-- way to "test" that mansions are valid automatically? no duplicates, etc?
+- manual play with Classic
+- manual play with Sequel
+- manual play with Small
 
 - Work on "Sequel", "Small", "Big"
 - Add GUI https://realpython.com/pysimplegui-python/
