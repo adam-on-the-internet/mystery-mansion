@@ -1,7 +1,9 @@
 from tasks.mansion_generator import generate_mansion
+from tasks.mansion_tester import test_mansion
 from tasks.mansion_saver import save_mansion
 
 def generate_game(style):
   mansion = generate_mansion(style.lower())
+  test_mansion(mansion)
   save_mansion(mansion)
   return mansion
