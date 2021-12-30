@@ -11,27 +11,21 @@ def test_spaces(style, spaces):
   if expected != len(spaces):
     print("ERR: Incorrect number of rooms generated.")
 
+def test_locked_spaces(style, locked_spaces):
   expected = read_locked_rooms(style)
-  locked_count = 0
-  for space in spaces:
-    if space.is_locked:
-      locked_count = locked_count + 1
-  if expected != locked_count:
+  if expected != len(locked_spaces):
     print("ERR: Incorrect number of locked rooms generated.")
 
-def test_furniture(style, spaces):
+def test_furniture(style, interactions):
   expected = read_furniture_setting(style)
-  furniture_count = 0
-  for space in spaces:
-    for interaction in space.interactions:
-      furniture_count = furniture_count + 1
-  if expected != furniture_count:
+  if expected != len(interactions):
     print("ERR: Incorrect number of furniture generated.")
 
 def test_mansion(mansion):
   test_id(mansion.id)
   test_spaces(mansion.style, mansion.spaces)
-  test_furniture(mansion.style, mansion.spaces)
+  test_locked_spaces(mansion.style, mansion.get_locked_spaces())
+  test_furniture(mansion.style, mansion.get_all_interactions())
   # TODO test mansion for more things
   # NO ROOM should have more than 1 clue spot
   # NO ROOM should have less than 2 items of furniture

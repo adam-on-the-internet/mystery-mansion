@@ -9,6 +9,18 @@ class MyMansion:
     self.code_history = code_history
     self.game_over = game_over
     self.clues_taken = clues_taken
+  def get_locked_spaces(self):
+    locked_spaces = []
+    for space in self.spaces:
+      if space.is_locked:
+        locked_spaces.append(space)
+    return locked_spaces
+  def get_all_interactions(self):
+    _interactions = []
+    for space in self.spaces:
+      for interaction in space.interactions:
+        _interactions.append(interaction)
+    return _interactions
   def print_available_clues(self):
     print()
     print("Available Clues:")
