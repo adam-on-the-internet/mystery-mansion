@@ -1,4 +1,4 @@
-from tasks.style_reader import read_rooms_setting, read_furniture_setting
+from tasks.style_reader import read_rooms_setting, read_locked_rooms, read_furniture_setting
 
 def test_id(id):
   if id is None:
@@ -10,6 +10,14 @@ def test_spaces(style, spaces):
   expected = read_rooms_setting(style)
   if expected != len(spaces):
     print("ERR: Incorrect number of rooms generated.")
+
+  expected = read_locked_rooms(style)
+  locked_count = 0
+  for space in spaces:
+    if space.is_locked:
+      locked_count = locked_count + 1
+  if expected != locked_count:
+    print("ERR: Incorrect number of locked rooms generated.")
 
 def test_furniture(style, spaces):
   expected = read_furniture_setting(style)
