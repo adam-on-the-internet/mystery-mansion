@@ -3,6 +3,7 @@
 ## Current
 
 - Work on "Sequel"
+- Add GUI https://realpython.com/pysimplegui-python/
 
 ## Future
 
