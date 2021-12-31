@@ -28,5 +28,6 @@ def test_mansion(mansion):
   test_furniture(mansion.style, mansion.get_all_interactions())
   # TODO test mansion for more things
   # NO ROOM should have more than 1 clue spot
+  #   instead, test the actual issue (all clues must be findable without unlocking any doors)
   # NO ROOM should have less than 2 items of furniture
   # NO ROOM should have more than 5 items of furniture
