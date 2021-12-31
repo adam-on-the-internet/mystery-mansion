@@ -25,14 +25,17 @@ def get_mansion_file_path(id):
   mansion_directory = get_mansion_directory(id)
   return mansion_directory + "mansion.md"
 
-def setup_directories(id):
-  # verify mansions directory is setup
-  games_directory = get_mansions_directory()
-  make_directory_if_not_exists(games_directory)
+def setup_mansions_directory():
+  mansions_directory = get_mansions_directory()
+  make_directory_if_not_exists(mansions_directory)
 
-  # verify mansion directory is setup
+def setup_mansion_directory(id):
   game_directory = get_mansion_directory(id)
   make_directory_if_not_exists(game_directory)
+
+def setup_directories(id):
+  setup_mansions_directory()
+  setup_mansion_directory(id)
 
 def setup_save_file(id):
   setup_directories(id)
