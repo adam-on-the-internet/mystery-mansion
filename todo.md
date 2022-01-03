@@ -1,5 +1,9 @@
 # TODO
 
+## v2
+
+- export to e2e
+
 ## Current
 
 - manual play with Classic
