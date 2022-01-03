@@ -50,13 +50,16 @@ class MyMansion:
         else:
           print("???")
   def check_space_discovery(self, x, y):
+    space_icon = "____"
     for space in self.spaces:
       if str(x) == space.coordinates[0] and str(y) == space.coordinates[1]:
         if space.discovered:
-          return " " + str(space.game_code) + " "
+          space_icon = " " + str(space.game_code) + " "
         else:
-          return str(space.game_code) + " ?"
-    return "____"
+          space_icon = str(space.game_code) + " ?"
+        if len(space_icon) == 3:
+          space_icon = " " + space_icon
+    return space_icon
   def end_game(self):
     self.game_over = True
   def print_code(self):
@@ -65,8 +68,11 @@ class MyMansion:
     if self.style in ["classic", "sequel"]:
       print()
       print("Map of the Mansion:")
-      print("          ______          ")
-      print("0--------/      \--------o")
+      if self.style == "classic":
+        print("          ______          ")
+        print("o--------/      \--------o")
+      elif self.style == "sequel":
+        print("o-------o--------o-------o")
       print("|       |        |       |")
       print("| " + self.check_space_discovery(2,-1) + "  x  " + self.check_space_discovery(2,0) + "  x " + self.check_space_discovery(2,1) + "  |")
       print("|       |        |       |")
@@ -78,20 +84,20 @@ class MyMansion:
       print("|       |        |       |")
       print("| " + self.check_space_discovery(0,-1) + "  x  " + self.check_space_discovery(0,0) + "  x " + self.check_space_discovery(0,1) + "  |")
       print("|       |        |       |")
-      print("o-----------xx-----------o")
+      print("o-------o---xx---o-------o")
       print("        | start  |       ")
     elif self.style == "small":
       print()
       print("Map of the Mansion:")
-      print("0----------------o")
+      print("o-------o-------o")
       print("|       |       |")
       print("| " + self.check_space_discovery(1,0) + "  x " + self.check_space_discovery(1,1) + "  |")
       print("|       |       |")
-      print("o---xx------xx---o")
+      print("o---xx-----xx---o")
       print("|       |       |")
       print("| " + self.check_space_discovery(0,0) + "  x " + self.check_space_discovery(0,1) + "  |")
       print("|       |       |")
-      print("o---xx----------o")
+      print("o---xx--o-------o")
       print("| start |       ")
   def take_clue(self):
     self.clues_taken = self.clues_taken + 1

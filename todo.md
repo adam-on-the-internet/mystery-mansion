@@ -6,9 +6,9 @@
 - manual play with Sequel
 - manual play with Small
 
-- Work on "Sequel", "Small", "Big"
+- Work on "Sequel", "Small", "Big", "Spooky", "Dungeon", "?"
 - Add GUI https://realpython.com/pysimplegui-python/
-- Humble Assets: House
+- Humble Assets: House, etc
 
 ## Future
 

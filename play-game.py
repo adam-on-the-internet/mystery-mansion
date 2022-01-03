@@ -79,13 +79,18 @@ def choose_voice():
 def choose_style():
   print()
   print("Setup 1 of 3:")
-  style_choice = input("What game style would you like?\n\nEnter 1 for CLASSIC (to use with physical game)\nEnter 2 for SEQUEL (experimental, does not work with phyiscal game)\n\n").lower()
+
+  classic_option = "Enter 1 for CLASSIC : original version, for use with the phyiscal game\n"
+  small_option =   "Enter 2 for SMALL   : experimental version, shorter version for use with the physical game\n"  
+  sequel_option =  "Enter 3 for SEQUEL  : experimental version, does not work with the physical game\n"
+  style_prompt = "What game style would you like?\n\n" + classic_option + small_option + sequel_option + "\n"
+  style_choice = input(style_prompt).lower()
   print()
-  if str(style_choice) == "2":
+  if str(style_choice) == "3":
     return "sequel"
-  elif str(style_choice == "3"):
+  elif str(style_choice) == "2":
     return "small"
-  elif str(style_choice == "1"):
+  elif str(style_choice) == "1":
     return "classic"
   else:
     return "classic"
@@ -100,6 +105,7 @@ engine = choose_voice()
 message = ""
 code = ""
 answers = []
+investigation_count = 0
 say_and_print_message(engine, "Welcome to Mystery Mansion!", "")
 print()
 mansion.print_code()
@@ -118,7 +124,7 @@ while not mansion.game_over:
   else:
     print()
     print()
-    print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+    print("~~~~~~ Check #" + str(investigation_count + 1) + " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
     print()
     print("Enter a Room Code, Furniture Code, or 'help' for more options.")
     code = input("Enter code:\n").lower()
@@ -145,12 +151,13 @@ while not mansion.game_over:
       mansion.print_available_clues()
     else:
       answers = []
+      investigation_count = investigation_count + 1
       message = mansion.check_code(code)
   
   print()
   if message != "":
     secret_message = ""
-    private_message_disclaimer = "\nBEEP BEEP. Look at the screen for a secret message.\nWhen you are finished, hit ENTER to clear the screen."
+    private_message_disclaimer = "\nAHEM. Look at the screen for a secret message.\nWhen you are finished, hit ENTER to clear the screen."
     should_deal_virtual_clue = len(clue_deck) != 0 and "You found a clue!" in message
     is_private_message = "** FOR YOUR EYES ONLY **" in message
 
@@ -168,4 +175,4 @@ while not mansion.game_over:
     if secret_message != "":
       use_manual_clear()
 
-say_and_print_message(engine, "-- GAME OVER --", "")
+say_and_print_message(engine, "\n\nSolved in " + str(investigation_count) + " checks.\n\n-- GAME OVER --", "")
