@@ -36,7 +36,7 @@ def read_locked_rooms(style):
   setting = read_setting(style, "locked rooms")
   return int(setting)
 
-def read_clues(style):
+def read_clues_setting(style):
   setting = read_setting(style, "clues")
   return int(setting)
 

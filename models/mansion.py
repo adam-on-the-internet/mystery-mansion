@@ -15,6 +15,12 @@ class MyMansion:
       if space.is_locked:
         locked_spaces.append(space)
     return locked_spaces
+  def get_unlocked_spaces(self):
+    unlocked_spaces = []
+    for space in self.spaces:
+      if not space.is_locked:
+        unlocked_spaces.append(space)
+    return unlocked_spaces
   def get_all_interactions(self):
     _interactions = []
     for space in self.spaces:

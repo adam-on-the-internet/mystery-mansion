@@ -60,7 +60,8 @@ class MyInteraction:
       if self.has_money():
         message = "You found the money. You win!"
       elif self.has_clue():
-        if self.clues_taken > 1:
+        clues_per_space = 2 # TODO make the clues-per-space value set in the style/settings
+        if self.clues_taken >= clues_per_space:
           message = "Sorry, there are no clues left here."
         else:
           message = "You found a clue!"
