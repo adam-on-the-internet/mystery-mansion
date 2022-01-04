@@ -3,6 +3,7 @@
 ## v2
 
 - export to e2e
+- special clues like "the money is hidden in something white"
 
 ## Current
 
@@ -16,6 +17,7 @@
 
 ## Future
 
+- Cooperative version? two teams each have the same mansion, need to use the least moves to win
 - Add Logging
   - add log of actions in a particular game
   - add log of actions overall
